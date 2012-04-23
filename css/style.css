@@ -4,6 +4,7 @@ body
   margin: 0;
   width: 400px;   /*560*/
   height: 330px;
+  font-size: 13px;
   /*height: expression( document.body.clientHeight < 59 ? "59px" : "auto" );*/
 }
 
@@ -313,6 +314,13 @@ body
 #see_results {
   float: right;
   text-align: right;
+}
+
+.disambig_selected {
+  background-color: #efefef !important;
+  border-radius: 2px;
+  border: 1px solid #c2c2c2 !important;
+  cursor: pointer;
 }
 
 

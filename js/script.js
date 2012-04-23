@@ -94,7 +94,8 @@ function displaySummary(res, query) {
         if (i < 2) {
             var first = (i === 0)? 'first_category': '';
 
-            first_category += '<div class="ddg_zeroclick_category '+ first +'" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'ddg_zeroclick_category '+ first +'\'" onclick="window.location.href=this.firstChild.href">' +
+            first_category += '<div class="ddg_zeroclick_category '+ first +
+                '" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'ddg_zeroclick_category '+ first +'\'"   onclick="window.location.href=this.firstChild.href">' +
                                 link +
                               '</div>';
         } else {
@@ -162,7 +163,8 @@ function displaySummary(res, query) {
 function displayDisambiguation(res, query){
     
     var result = '';
-    result += '<div id="ddg_zeroclick_header"> Meanings of ' +
+    result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
+                      encodeURIComponent(query) +'"> Meanings of ' +
                     res['Heading'] +
 
                 '<a class="ddg_more" href="https://duckduckgo.com/?q='+
