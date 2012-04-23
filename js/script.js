@@ -132,9 +132,9 @@ function displaySummary(res, query) {
 
     result += '<div id="ddg_zeroclick_abstract">' +
                 '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
-                res['AbstractURL'] +'\'">' +
+                res['AbstractURL'] +'\'"/>' +
 
-                '<p>' + res['Abstract'] +
+                '<p>' + res['Abstract'] + '</p></div>' +
                 '<div id="ddg_zeroclick_official_links">' +
                     '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
                     '<a href="' + res['AbstractURL'] + '"> More at ' +
