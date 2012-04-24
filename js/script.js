@@ -7,7 +7,7 @@ function setHeight (element)
   with (document.body.style)
 	{
 		//width = "500px";
-		height = h + "px";
+		//height = h + "px";
 	}
 }
 
@@ -21,7 +21,6 @@ function nothingFound(query)
                                 '<a class="ddg_more" href="https://duckduckgo.com/?q='+
                                     encodeURIComponent(query)
                                 +'"> See DuckDuckGo results </a>' + '</div>';
-        
     }
     setHeight(ddg_result)
 }
@@ -148,8 +147,7 @@ function displaySummary(res, query) {
     if (res['Image']) {
         result += '<div id="ddg_zeroclick_image">' +
                     '<a href="' + img_url +'">' +
-                        '<img class="ddg_zeroclick_img" src="' + res['Image'] +
-                        '" />' +
+                        '<img class="ddg_zeroclick_img" src="' + res['Image'] + '"/>' +
                     '</a>' +
                   '</div>';
     }
@@ -178,7 +176,7 @@ function displayDisambiguation(res, query){
     var others = '';
     var nhidden = 0;
 
-   for (var i = 0; i < res['RelatedTopics'].length; i++){
+   for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 
@@ -191,7 +189,7 @@ function displayDisambiguation(res, query){
                             '<div class="icon_disambig">' +
                                 '<img src="' + topics[j]['Icon']['URL'] +'" />' +
                             '</div>' +
-                            '<div class="ddg_zeroclick_disambig"  onmouseover="this.className+=\' disambig_selected\'" onmouseout="this.className=            \'ddg_zeroclick_disambig\'" onclick="window.location.href=this.firstChild.href">' +
+                            '<div class="ddg_zeroclick_disambig"  onmouseover="this.className+=\'disambig_selected\'" onmouseout="this.className=            \'ddg_zeroclick_disambig\'" onclick="window.location.href=this.firstChild.href">' +
                                 topics[j]['Result'] +
                             '</div>' +
                           '</div>';

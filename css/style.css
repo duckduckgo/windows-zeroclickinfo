@@ -122,17 +122,19 @@ body
 #ddg_zeroclick_image {
     margin: 10px;
     float: right;
+    width: 100px;
 }
 
 .ddg_zeroclick_img {
     display: inline;
-    /*width: expression( 60 + "px");
-    height: expression( 60 + "px");*/
-    float: right;
+    border: none;
+    width: expression( this.width > 79 ? "80px" : "auto");    
+    height: expression( this.height > 99 ? "100px" : "auto"); 
+    float: left;
     padding: 5px 0px 2px 2px;
     position: absolute;
-    right: 2px;
-    bottom: 2px;
+    right: 8px;
+    top: 115px;
 }
 
 #ddg_zeroclick_abstract {
@@ -142,7 +144,7 @@ body
     margin-left: 5px;
     margin-top: -5px;
     word-wrap: break-word;
-    
+    width: 290px;
 }
 
 #ddg_zeroclick_abstract > div{
@@ -332,3 +334,4 @@ body
     font-size: 0;
     line-height: 0;
 }
+
