@@ -176,7 +176,7 @@ function displayDisambiguation(res, query){
     var others = '';
     var nhidden = 0;
 
-   for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
+   for (var i = 0; i < res['RelatedTopics'].length; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 

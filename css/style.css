@@ -200,7 +200,7 @@ body
     line-height: 1.4;
     padding: 4px;
     margin-left: 38px;
-    width: expression(350 + "px");
+    width: expression(338 + "px");
 }
 
 .icon_disambig {
@@ -229,7 +229,7 @@ body
     display: inline;
     float: left;
     margin-top: 2px;
-    padding-right: 4px;
+    padding-right: 3px;
 }
 
 .icon_category {
@@ -282,8 +282,10 @@ body
 
 
 #ddg_zeroclick_category_img {
-    max-height: 30px;
-    max-width: 30px;
+    /*max-height: 30px;
+    max-width: 30px;*/
+    width: expression(this.scrollWidth > 29 ? "30px" : "auto");
+    height: expression(this.scrollHeight > 29 ? "30px" : "auto");
 }
 
 #ddg_zeroclick_more{
@@ -296,7 +298,7 @@ body
 .wrapper {
     clear: left;
     padding-bottom: 3px;
-    width: 530px;
+    width: 383px;
     border: 1px solid #fafafa;
 }
 
