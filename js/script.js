@@ -15,12 +15,19 @@ function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
-        ddg_result.innerHTML = '<div id="nothing_found">' + 
+        /*ddg_result.innerHTML = '<div id="nothing_found">' + 
                                 "No zero click results found." + '</div>' + 
                                 '<div id="see_results">' +  
-                                '<a class="ddg_more" href="https://duckduckgo.com/?q='+
+                                '<img src="../css/imgs/icon_16.png"/></div>' +
+                                '<a id="nothing_found_more" href="https://duckduckgo.com/?q='+
                                     encodeURIComponent(query)
-                                +'"> See DuckDuckGo results </a>' + '</div>';
+                                +'"> See DuckDuckGo results </a>' + 
+                                '</div>';*/
+      ddg_result.innerHTML = '<img style="float: left;" src="../css/imgs/icon_16.png"/>' + 
+                                'No zero click results found.' + 
+                                '<a id="nothing_found_more" href="https://duckduckgo.com/?q='+
+                                    encodeURIComponent(query)
+                                +'"> See DuckDuckGo results </a>';
     }
     setHeight(ddg_result)
 }

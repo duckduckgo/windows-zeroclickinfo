@@ -5,7 +5,7 @@ body
   width: 400px;   /*560*/
   height: 330px;
   font-size: 13px;
-  /*height: expression( document.body.clientHeight < 59 ? "59px" : "auto" );*/
+  /*height: expression( document.body.clientHeight < 60 ? "59px" : "auto" );*/
 }
 
 #header {
@@ -311,8 +311,20 @@ body
     margin-right: 8px;
 }
 
+#nothing_found_more {
+  text-decoration: none;
+  font-style: bold;
+  padding-left: 40px
+}
+
+#nothing_found_more:hover {
+  text-decoration: underline;
+}
+
+
 #nothing_found {
   width: 200px;
+  font-size: 130% ;
   float: left;
   text-align: left;
 }
@@ -320,6 +332,8 @@ body
 #see_results {
   float: right;
   text-align: right;
+  padding-right: 5px;
+  padding-top: 3px;
 }
 
 .disambig_selected {
