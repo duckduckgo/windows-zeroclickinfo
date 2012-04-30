@@ -9,7 +9,7 @@ body
 }
 
 #header {
-  background: url("imgs/header_bg.v101.png") repeat-x scroll 0 0 #CD473B;
+  background: url("imgs/bckgs/red.png") repeat-x scroll 0 0 #CD473B;
   height: 59px;
   font-size: 20px;
   text-align: center;
@@ -128,8 +128,8 @@ body
 .ddg_zeroclick_img {
     display: inline;
     border: none;
-    width: expression( this.width > 79 ? "80px" : "auto");    
-    height: expression( this.height > 99 ? "100px" : "auto"); 
+    width: expression( this.scrollWidth > 79 ? "80px" : "auto");    
+    height: expression( this.scrollHeight > 99 ? "100px" : "auto"); 
     float: left;
     padding: 5px 0px 2px 2px;
     position: absolute;

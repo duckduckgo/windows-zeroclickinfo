@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-        <name>DuckDuckGo - ZeroClickInfo gadget</name>
-        <namespace>windows.sdk</namespace>
-        <version>0.0.1</version>
-        <author name="Adman">
-                <info url="http://duckduckgo.com" />
-                <logo src="css/imgs/icon_128.png" />
-        </author>
-        <copyright>&#169; 2012</copyright>
-        <description>ZeroClickInfo gadget</description>
-        <icons>
-                <icon height="128" width="128" src="css/imgs/icon_128.png" />
-        </icons>
-        <hosts>
-                <host name="sidebar">
+  <name>DuckDuckGo</name>
+  <namespace>windows.sdk</namespace>
+  <version>0.0.1</version>
+  <author name="Adman">
+      <info url="http://duckduckgo.com" />
+      <logo src="css/imgs/icon_128.png" />
+  </author>
+  <copyright>&#169; 2012</copyright>
+  <description>Zero click info gadget</description>
+  <icons>
+      <icon height="128" width="128" src="css/imgs/icon_128.png" />
+  </icons>
+  <hosts>
+      <host name="sidebar">
+          <autoscaleDPI>true</autoscaleDPI>
 
-                        <!-- New autoscaleDPI node -->
-                        <autoscaleDPI>true</autoscaleDPI>
-
-                        <base type="HTML" apiVersion="1.0." src="main.html" />
-                        <permissions>Full</permissions>
-                        <platform minPlatformVersion="1.0" />
-                        <defaultImage src="css/imgs/icon_128.png" />
-                </host>
-        </hosts>
+          <base type="HTML" apiVersion="1.0." src="main.html" />
+          <permissions>Full</permissions>
+          <platform minPlatformVersion="1.0" />
+          <defaultImage src="css/imgs/icon_128.png" />
+      </host>
+  </hosts>
 </gadget>

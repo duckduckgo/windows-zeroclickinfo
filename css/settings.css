@@ -1,0 +1,14 @@
+body{
+  width: 150px;
+  height: 80px;
+  margin: 0px;
+}
+.title {
+  font-size: 12px;
+  width: 200px;
+  font-family: Segoe UI, Tahoma, sans-serif;
+}
+
+.setName {
+  font-size: 12px;
+}
