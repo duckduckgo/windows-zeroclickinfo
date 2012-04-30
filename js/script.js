@@ -377,10 +377,9 @@ function search(q){
     });
 }
 
-
-window.onload = function(){
-  //System.Gadget.Flyout.show = true;
-  document.getElementById("search_button").onclick = function(){
+function initDDG () {
+    System.Gadget.settingsUI = "settings.html";
+    document.getElementById("search_button").onclick = function(){
     var el = document.getElementById('search_wrapper');
     if (el.value !== '')
         search(el.value);
@@ -399,3 +398,7 @@ window.onload = function(){
       return false;
   };
 }
+
+
+
+

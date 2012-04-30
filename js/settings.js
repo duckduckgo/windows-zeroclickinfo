@@ -9,15 +9,10 @@ var colorsArr = new Array ( ["Red (default)", red],
                             ["Light Green", light_green ] );
 
 
-function initSettings()	
-{
-    System.Gadget.settingsUI = "settings.html";
-}
-
 function loadSetts()
 {
   	ddgSets = new GetDDGSettings();	
-	  colors.value = ddgSets.background; 
+	  //colors.value = ddgSets.background; 
     //addOptions();
 	  //setDefaultValue(ddgSets);
     System.Gadget.onSettingsClosing = CloseSets;
@@ -80,7 +75,7 @@ function setSettings()
 function CloseSets(event)
 {
 	if (event.closeAction == event.Action.commit){
-		SaveSettings();
+		//SaveSettings();
 	}else if(event.closeAction == event.Action.cancel){
 	}
 	event.cancel = false;
