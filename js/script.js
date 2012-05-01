@@ -1,4 +1,6 @@
 
+var sets;
+
 function setHeight (element)
 { 
   var result = document.getElementById("ddg_zeroclick");
@@ -379,25 +381,91 @@ function search(q){
 
 function initDDG () {
     System.Gadget.settingsUI = "settings.html";
+    System.Gadget.onSettingsClosed = setSettings;
+
     document.getElementById("search_button").onclick = function(){
-    var el = document.getElementById('search_wrapper');
-    if (el.value !== '')
-        search(el.value);
-    else
+      var el = document.getElementById('search_wrapper');
+      if (el.value !== '')
+          search(el.value);
+      else
+          return false;
+    };
+    document.getElementById("search_wrapper").onkeyup = function(){
+      var key = event.keyCode;
+      var el = document.getElementById('search_wrapper');
+      if (key === 13){
+        if (el.value !== ""){
+          search(el.value);
+        }else
+          return false;
+      }else 
         return false;
-  };
-  document.getElementById("search_wrapper").onkeyup = function(){
-    var key = event.keyCode;
-    var el = document.getElementById('search_wrapper');
-    if (key === 13){
-      if (el.value !== ""){
-        search(el.value);
-      }else
-        return false;
-    }else 
-      return false;
-  };
+    };
 }
+
+
+
+
+/************************
+ *
+ *   SETTINGS
+ *
+ ************************/
+
+var bckg = "red";
+
+var colorsArr = new Array ( ["Red (default)", "red"],
+                            ["Blue", "blue"],
+                            ["Green", "green"],
+                            ["Orange", "orange"],
+                            ["Purple", "purple"],
+                            ["Light Blue", "light_blue"],
+                            ["Light Green", "light_green" ] );
+
+var ddgSets;	
+
+function loadSetts()
+{
+    ddgSets = new GetDDGSettings()
+    var select = document.getElementById("colors");
+    select.options[select.options.selectedIndex].selected = true;
+	  System.Gadget.onSettingsClosing = ClosingSets;
+}
+
+function GetDDGSettings()
+{
+    this.background = System.Gadget.Settings.read("background");
+    this.gviewed = System.Gadget.Settings.read("GadgetViewed");
+}
+
+function SaveSettings()
+{  
+    bckg = colors.value;    		
+    System.Gadget.Settings.write("background", bckg);
+    ddgSets.background = bckg;
+}
+
+function setSettings()
+{
+    sets = new GetDDGSettings();
+    var bg = document.getElementById('header');
+    bg.style.backgroundImage = 'url("css/imgs/bckgs/' + sets.background +'.png")';
+    bg.style.backgroundRepeat = "repeat-x scroll 0 0 #CD473B";
+}
+
+
+//when the Settings are closing
+function ClosingSets(event)
+{
+	if (event.closeAction == event.Action.commit){
+		  System.Gadget.Settings.write("GadgetViewed","yes");
+      SaveSettings();
+	}else if(event.closeAction == event.Action.cancel){}
+	event.cancel = false;
+}
+
+
+
 
 
 
