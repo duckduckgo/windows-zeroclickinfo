@@ -3,9 +3,9 @@ body
   font-family: "Helvetica Neue","Segoe UI",Arial,sans-serif;
   margin: 0;
   width: 400px;   /*560*/
-  height: 330px;
+ /* height: 330px;*/
   font-size: 13px;
-  /*height: expression( document.body.clientHeight < 60 ? "59px" : "auto" );*/
+  height: expression( document.body.clientHeight < 776 ? "777px" : "auto" );
 }
 
 #header {
@@ -33,6 +33,7 @@ body
   width: 395px;
   z-index: 10;
   margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 

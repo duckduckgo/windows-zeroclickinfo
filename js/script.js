@@ -383,6 +383,13 @@ function initDDG () {
     System.Gadget.settingsUI = "settings.html";
     System.Gadget.onSettingsClosed = setSettings;
 
+    //nasty hack
+    setInterval( function(){
+        document.body.style.height = (60 + document.getElementById('results').clientHeight) + "px";
+      }, 200);
+
+
+
     document.getElementById("search_button").onclick = function(){
       var el = document.getElementById('search_wrapper');
       if (el.value !== '')
