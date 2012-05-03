@@ -389,6 +389,15 @@ function initDDG () {
       }, 200);
 
 
+    document.getElementById("search_button").onmousedown = function(){
+      this.style.background = "url(css/imgs/search_active.png)";
+      this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
+    }
+    document.getElementById("search_button").onmouseup = function(){
+      this.style.background = "url(css/imgs/search_inactive.png)";
+      this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
+    }
+
 
     document.getElementById("search_button").onclick = function(){
       var el = document.getElementById('search_wrapper');

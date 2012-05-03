@@ -68,7 +68,7 @@ body
 
 #search_button {  
   margin-top: 8px;
-  background: url("imgs/search_dropdown.v102.png") no-repeat scroll 0 0 transparent;
+  background: url("imgs/search_inactive.png") no-repeat scroll 0 0 transparent;
   width: 43px;
   height: 37px;
   border: 0 none;
