@@ -210,7 +210,7 @@ function displayDisambiguation(res, query){
         }
             
  
-        if (i <= 2) {
+        if (i <= 3) {
             disambigs += '<div class="wrapper">' +
                             '<div class="icon_disambig">' +
                                 '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
@@ -232,7 +232,7 @@ function displayDisambiguation(res, query){
         }
     }
     
-   /* if (hidden_disambigs!== '') {
+    if (hidden_disambigs!== '') {
         hidden_disambigs = '<div class="disambig_more">' +
                                 '<a href="javascript:;" onclick="' +
                                     "this.parentElement.style.display='none';" +
@@ -242,7 +242,7 @@ function displayDisambiguation(res, query){
                                 '<div style="display:none">' +
                                     hidden_disambigs+
                                 '</div>';
-    }*/
+    }
 
 
     result += '<div id="ddg_zeroclick_abstract">' +
