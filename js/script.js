@@ -52,8 +52,28 @@ function createResultDiv()
     return ddg_result;
 }
 
-function displayAnswer(answer)
+function createRedirDiv(redirect){
+    var ddg_result = document.getElementById("ddg_zeroclick");
+    if (ddg_result !== null){
+      ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>' + 
+                                '<a id="redirect" href="' + redirect + 
+                                '"> Redirect here </a>';
+    }
+}
+
+function displayAnswer(res, answer)
 {
+    var ddg = document.getElementById ('ddg_zeroclick');
+    if (ddg === null){
+        createResultDiv();
+    }   
+    
+    if (res["Redirect"] !== ""){ 
+        createRedirDiv(res["Redirect"]);
+        document.getElementById('redirect').click();
+        return;
+    }
+
     if (answer === '') {
         return;
     }
@@ -64,7 +84,7 @@ function displayAnswer(answer)
 }
 
 function displaySummary(res, query) {
-    var result = ''
+    var result = '';
 
     var img_url = res['AbstractURL'];
     var official_site = '';
@@ -319,22 +339,18 @@ function displayCategory(res, query){
 
 function renderZeroClick(res, query)
 {
-    // disable on images
-    if (document.getElementById('isr_pps') !== null)
-        return;
-
     if (res['AnswerType'] !== "") {
-        displayAnswer(res['Answer']);
+        displayAnswer(res, res['Answer']);
     } else if (res['Type'] == 'A' && res['Abstract'] !== "") {
         displaySummary(res, query);
     } else {
         switch (res['Type']){
             case 'E':
-                displayAnswer(res['Answer']);
+                displayAnswer(res, res['Answer']);
                 break;
 
             case 'A':
-                displayAnswer(res['Answer']);
+                displayAnswer(res, res['Answer']);
                 break;
 
             case 'C':
@@ -356,7 +372,7 @@ function renderZeroClick(res, query)
 
 function query(q, callback){
   var req = new XMLHttpRequest();
-  req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json', true);
+  req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1', true);
 
   req.onreadystatechange = function(data) {
       if (req.readyState != 4) { return; }
@@ -373,8 +389,8 @@ function search(q){
 }
 
 function initDDG () {
-    System.Gadget.settingsUI = "settings.html";
-    System.Gadget.onSettingsClosed = setSettings;
+    //System.Gadget.settingsUI = "settings.html";
+    //System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
@@ -382,14 +398,14 @@ function initDDG () {
       }, 200);
 
 
-    document.getElementById("search_button").onmousedown = function(){
+    /*document.getElementById("search_button").onmousedown = function(){
       this.style.background = "url(css/imgs/search_active.png)";
       this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
     }
     document.getElementById("search_button").onmouseup = function(){
       this.style.background = "url(css/imgs/search_inactive.png)";
       this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
-    }
+    }*/
 
 
     document.getElementById("search_button").onclick = function(){
