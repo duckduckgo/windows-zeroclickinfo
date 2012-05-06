@@ -16,8 +16,8 @@ body
 }
 
 #header div {
-  width: 320px;
-  margin-left: 35px;
+  width: 355px;
+  margin-left: 20px;
 }
 
 #results {
@@ -55,7 +55,7 @@ body
   float: left;
   font-size: 95.2%;
   height: 37px;
-  width: 215px;
+  width: 250px;
   outline: medium none;
   margin-left: 5px;
   margin-top: 8px;

@@ -1,16 +1,14 @@
-
 var sets;
 
 function setHeight (element)
 { 
   var result = document.getElementById("ddg_zeroclick");
   var h = element.style.height;
-  //document.getElementById("search_button").value = h;
   
-  with (document.body.style)
+  /*with (document.body.style)
   {
   	height = h + "px";
-  }
+  }*/
 }
 
 function nothingFound(query)
@@ -23,7 +21,6 @@ function nothingFound(query)
                                     encodeURIComponent(query)
                                 +'"> See DuckDuckGo results </a>';
     }
-    setHeight(ddg_result)
 }
 
 function hideZeroClick()
@@ -64,7 +61,6 @@ function displayAnswer(answer)
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
     ddg_result.innerHTML = answer;
-    setHeight(ddg_result);
 }
 
 function displaySummary(res, query) {
@@ -156,7 +152,6 @@ function displaySummary(res, query) {
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
-    setHeight(ddg_result);
 }
 
 function displayDisambiguation(res, query){
@@ -255,7 +250,6 @@ function displayDisambiguation(res, query){
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
-    setHeight(ddg_result);
 }
 
 function displayCategory(res, query){
@@ -321,7 +315,6 @@ function displayCategory(res, query){
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
-    setHeight(ddg_result);
 }
 
 function renderZeroClick(res, query)
@@ -479,6 +472,7 @@ function ClosingSets(event)
 	}else if(event.closeAction == event.Action.cancel){}
 	event.cancel = false;
 }
+
 
 
 
