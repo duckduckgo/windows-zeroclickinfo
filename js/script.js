@@ -389,8 +389,8 @@ function search(q){
 }
 
 function initDDG () {
-    //System.Gadget.settingsUI = "settings.html";
-    //System.Gadget.onSettingsClosed = setSettings;
+    System.Gadget.settingsUI = "settings.html";
+    System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
