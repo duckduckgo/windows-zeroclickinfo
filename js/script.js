@@ -202,6 +202,7 @@ function displayDisambiguation(res, query){
     var hidden_disambigs = '';
     var others = '';
     var nhidden = 0;
+    var icon_dis = '';
 
    for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
         if (res['RelatedTopics'].length === 0)
@@ -235,11 +236,15 @@ function displayDisambiguation(res, query){
             continue;
         }
             
- 
+        if (res['RelatedTopics'][i]['Icon']['URL'] !== "")
+            icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
+        else 
+            icon_dis = '';
+
         if (i <= 3) {
             disambigs += '<div class="wrapper">' +
                             '<div class="icon_disambig">' +
-                                '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
+                                icon_dis +
                             '</div>' +
                             '<div class="ddg_zeroclick_disambig">' +
                                 res['RelatedTopics'][i]['Result'] +
