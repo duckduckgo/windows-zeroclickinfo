@@ -57,7 +57,7 @@ function createRedirDiv(redirect){
     if (ddg_result !== null){
       ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>' + 
                                 '<a id="redirect" href="' + redirect + 
-                                '"> Redirect here </a>';
+                                '"> Redirect at ' + '</a>';
     }
 }
 
@@ -137,41 +137,57 @@ function displaySummary(res, query) {
     result += '<div id="ddg_zeroclick_header">' +
                 '<a href="' + res['AbstractURL'] + '">'+
                     (res['Heading'] === ''? "&nbsp;": res['Heading']) +
-                '</a>' +
-                '<a class="ddg_more" href="https://duckduckgo.com/?q='+
-                    encodeURIComponent(query)
-                +'"> See DuckDuckGo results </a>' +
-                '</div>';
+                '</a></div>';
     
     
     var source_base_url = res['AbstractURL'].match(/http.?:\/\/(.*?\.)?(.*\..*?)\/.*/)[2];
 
-    result += '<div id="ddg_zeroclick_abstract">' +
-                '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
-                res['AbstractURL'] +'\'"/>' +
+    if (res['Image'] !== ""){
+        result += '<div id="ddg_zeroclick_abstract">' +
+                    '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
+                    res['AbstractURL'] +'\'"/>' +
 
-                '<p>' + res['Abstract'] + '</p></div>' +
-                '<div id="ddg_zeroclick_official_links">' +
-                    '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
-                    '<a href="' + res['AbstractURL'] + '"> More at ' +
-                        res['AbstractSource'] +
-                    '</a>' + official_site +
-                '</div></div>' +
-                 /*first_category +
-                 hidden_categories +*/
-              '</div><div class="clear"></div>';
+                    '<p>' + res['Abstract'] + '</p></div>' +
+                    '<div id="ddg_zeroclick_official_links">' +
+                        '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
+                        '<a href="' + res['AbstractURL'] + '"> More at ' +
+                            res['AbstractSource'] +
+                        '</a>' + official_site +
+                    '</div></div>' +
+                     /*first_category +
+                     hidden_categories +*/
+                  '</div><div class="clear"></div>';
 
-    if (res['Image']) {
         result += '<div id="ddg_zeroclick_image">' +
                     '<a href="' + img_url +'">' +
                         '<img class="ddg_zeroclick_img" src="' + res['Image'] + '"/>' +
-                    '</a>' +
-                  '</div>';
+                    '</a></div>';
+    }else {
+        result += '<div id="ddg_zeroclick_abstract_full">' +
+                    '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
+                    res['AbstractURL'] +'\'"/>' +
+
+                    '<p>' + res['Abstract'] + '</p></div>' +
+                    '<div id="ddg_zeroclick_official_links">' +
+                        '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
+                        '<a href="' + res['AbstractURL'] + '"> More at ' +
+                            res['AbstractSource'] +
+                        '</a>' + official_site +
+                    '</div></div>' +
+                     /*first_category +
+                     hidden_categories +*/
+                  '</div><div class="clear"></div>';
     }
+          
+     result += '<br /><div id="others_div">' + 
+                  '<a class="ddg_more" href="https://duckduckgo.com/?q='+
+                    encodeURIComponent(query)
+                +'"> See other results </a>' +
+               '<img src="css/imgs/icon_16.png"/></div>';
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
-    ddg_result.innerHTML = result;
+    ddg_result.innerHTML = result ;
 }
 
 function displayDisambiguation(res, query){
@@ -179,12 +195,7 @@ function displayDisambiguation(res, query){
     var result = '';
     result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
                       encodeURIComponent(query) +'"> Meanings of ' +
-                    res['Heading'] +
-
-                '<a class="ddg_more" href="https://duckduckgo.com/?q='+
-                    encodeURIComponent(query)
-                +'"> See DuckDuckGo results </a>' +
-
+                    res['Heading']  +
               '</div>';
 
     var disambigs = ''
@@ -192,7 +203,7 @@ function displayDisambiguation(res, query){
     var others = '';
     var nhidden = 0;
 
-   for (var i = 0; i < res['RelatedTopics'].length; i++){
+   for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 
@@ -262,10 +273,15 @@ function displayDisambiguation(res, query){
 
     result += '<div id="ddg_zeroclick_abstract">' +
                   disambigs +
-                  hidden_disambigs +
+                  /*hidden_disambigs +*/
                   /*others +*/
               '</div><div class="clear"></div>';
-              
+     
+     result += '<br /><div id="others_div">' + 
+                  '<a class="ddg_more" href="https://duckduckgo.com/?q='+
+                    encodeURIComponent(query)
+                +'"> See other results </a>' +
+               '<img src="css/imgs/icon_16.png"/></div>';         
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
@@ -276,15 +292,12 @@ function displayCategory(res, query){
     var result = '';
     result += '<div id="ddg_zeroclick_header">' +
                     res['Heading'] +
-                '<a class="ddg_more" href="https://duckduckgo.com/?q='+
-                    encodeURIComponent(query)
-                +'"> See DuckDuckGo results </a>' +
               '</div>';
     
     var categories = '';
     var hidden_categories = '';
     var nhidden = 0;
-    for (var i = 0; i < res['RelatedTopics'].length; i++){
+    for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 
@@ -327,10 +340,14 @@ function displayCategory(res, query){
 
     result += '<div id="ddg_zeroclick_abstract">' +
                     categories +
-                    hidden_categories +
+                    /*hidden_categories +*/
                 '</div>';
                 
-    
+     result += '<br /><div id="others_div">' + 
+                  '<a class="ddg_more" href="https://duckduckgo.com/?q='+
+                    encodeURIComponent(query)
+                +'"> See other results </a>' +
+               '<img src="css/imgs/icon_16.png"/></div>';       
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
