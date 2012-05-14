@@ -15,7 +15,7 @@ function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
-      ddg_result.innerHTML = '<img style="float: left;" src="../css/imgs/icon_16.png"/>' + 
+      ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>' + 
                                 'No zero click results found.' + 
                                 '<a id="nothing_found_more" href="https://duckduckgo.com/?q='+
                                     encodeURIComponent(query)
@@ -57,7 +57,7 @@ function createRedirDiv(redirect){
     if (ddg_result !== null){
       ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>' + 
                                 '<a id="redirect" href="' + redirect + 
-                                '"> Redirect at ' + '</a>';
+                                '"> Redirect there</a>';
     }
 }
 
@@ -204,42 +204,19 @@ function displayDisambiguation(res, query){
     var nhidden = 0;
     var icon_dis = '';
 
-   for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
+   for (var i = 0; i < 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 
-        // other topics
-        if(res['RelatedTopics'][i]['Topics']) {
-            var topics = res['RelatedTopics'][i]['Topics'];
-            var output = '';
-            for(var j = 0; j < topics.length; j++){
-                output += '<div class="wrapper">' +
-                            '<div class="icon_disambig">' +
-                                '<img src="' + topics[j]['Icon']['URL'] +'" />' +
-                            '</div>' +
-                            '<div class="ddg_zeroclick_disambig"  onmouseover="this.className+=\'disambig_selected\'" onmouseout="this.className=            \'ddg_zeroclick_disambig\'" onclick="window.location.href=this.firstChild.href">' +
-                                topics[j]['Result'] +
-                            '</div>' +
-                          '</div>';
-            }
-            /*others += '<div class="disambig_more" onmouseover="this.className+=\' disambig_selected\'" onmouseout="this.className=\'disambig_more\'" onclick="this.firstChild.onclick();this.className=\'disambig_more\';this.onmouseover=function(){}">' +
-                                '<a href="javascript:;" onclick="' +
-                                    "this.parentElement.nextElementSibling.style.display='block';this.onmouseover=null;" +
-                                    "this.parentElement.innerHTML = '" + res['RelatedTopics'][i]['Name'] + "<hr>';" +
-                                '"> ' + res['RelatedTopics'][i]['Name'] + ' ('+ topics.length + ')</a>' +
-                             '</div>' +
-                                '<div style="display:none">' +
-                                    output +
-                                '</div>';*/
-            
+        if (res['RelatedTopics'][i]['Topics'])
+            break;
 
-            continue;
-        }
-            
-        if (res['RelatedTopics'][i]['Icon']['URL'] !== "")
+
+        if (res['RelatedTopics'][i]['Icon']['URL'] !== '')
             icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
         else 
             icon_dis = '';
+        
 
         if (i <= 3) {
             disambigs += '<div class="wrapper">' +
@@ -253,7 +230,7 @@ function displayDisambiguation(res, query){
         } else {
             hidden_disambigs += '<div class="wrapper">' +
                                     '<div class="icon_disambig">' +
-                                        '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
+                                        '<img src="' + icon_dis +'" />' +
                                     '</div>' +
                                     '<div class="ddg_zeroclick_disambig">' +
                                         res['RelatedTopics'][i]['Result'] +
@@ -312,7 +289,7 @@ function displayCategory(res, query){
                                 '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
                             '</div>' +
                             '<div class="ddg_zeroclick_category_item">' +
-                                res['RelatedTopics'][i]['Result'] +
+              res['RelatedTopics'][i]['Icon']['URL'] + res['RelatedTopics'][i]['Result'] +
                             '</div>' +
                           '</div>';
         } else {
@@ -475,7 +452,7 @@ function loadSetts()
 {
     ddgSets = new GetDDGSettings()
     var select = document.getElementById("colors");
-    select.options[select.options.selectedIndex].selected = true;
+    select.options[select.options.].selected = true;
 	  System.Gadget.onSettingsClosing = ClosingSets;
 }
 
