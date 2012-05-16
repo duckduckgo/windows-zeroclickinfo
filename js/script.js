@@ -2,13 +2,7 @@ var sets;
 
 function setHeight (element)
 { 
-  var result = document.getElementById("ddg_zeroclick");
-  var h = element.style.height;
-  
-  /*with (document.body.style)
-  {
-  	height = h + "px";
-  }*/
+  return;
 }
 
 function nothingFound(query)
@@ -145,7 +139,7 @@ function displaySummary(res, query) {
     if (res['Image'] !== ""){
         result += '<div id="ddg_zeroclick_abstract">' +
                     '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
-                    res['AbstractURL'] +'\'"/>' +
+                    res['AbstractURL'] +'\'">' +
 
                     '<p>' + res['Abstract'] + '</p></div>' +
                     '<div id="ddg_zeroclick_official_links">' +
@@ -190,6 +184,15 @@ function displaySummary(res, query) {
     ddg_result.innerHTML = result ;
 }
 
+function disambigClick (topic)
+{
+    if (topic["Text"] !== ""){
+        var str = topic["Text"].split(","); 
+        document.getElementById('search_wrapper').value = str[0];
+        document.getElementById('search_button').click();
+    }
+}
+
 function displayDisambiguation(res, query){
     
     var result = '';
@@ -219,40 +222,19 @@ function displayDisambiguation(res, query){
         
 
         if (i <= 3) {
-            disambigs += '<div class="wrapper">' +
-                            '<div class="icon_disambig">' +
-                                icon_dis +
-                            '</div>' +
-                            '<div class="ddg_zeroclick_disambig">' +
-                                res['RelatedTopics'][i]['Result'] +
-                            '</div>' +
-                          '</div>';
-        } else {
-            hidden_disambigs += '<div class="wrapper">' +
-                                    '<div class="icon_disambig">' +
-                                        '<img src="' + icon_dis +'" />' +
-                                    '</div>' +
-                                    '<div class="ddg_zeroclick_disambig">' +
-                                        res['RelatedTopics'][i]['Result'] +
-                                    '</div>' +
-                                  '</div>';
-            nhidden++;
-        }
+            disambigs += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
+                      +     'onmouseout="this.className=\'wrapper\'"' 
+                      +  'onclick="window.location.href=\'' + res['RelatedTopics'][i]['FirstURL'] +'\'">' 
+                      + '<div class="icon_disambig">' 
+                      +     icon_dis 
+                      + '</div>' 
+                      + '<div class="ddg_zeroclick_disambig">' 
+                      +        res['RelatedTopics'][i]['Result'] 
+                      +   '</div>' 
+                      + '</div>';
+        } 
     }
     
-    if (hidden_disambigs!== '') {
-        hidden_disambigs = '<div class="disambig_more">' +
-                                '<a href="javascript:;" onclick="' +
-                                    "this.parentElement.style.display='none';" +
-                                    "this.parentElement.nextElementSibling.style.display='block'" +
-                                '"> More ('+ nhidden + ')</a>' +
-                             '</div>' +
-                                '<div style="display:none">' +
-                                    hidden_disambigs+
-                                '</div>';
-    }
-
-
     result += '<div id="ddg_zeroclick_abstract">' +
                   disambigs +
                   /*hidden_disambigs +*/
@@ -272,60 +254,40 @@ function displayDisambiguation(res, query){
 
 function displayCategory(res, query){
     var result = '';
-    result += '<div id="ddg_zeroclick_header">' +
-                    res['Heading'] +
+    result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
+                      encodeURIComponent(query) +'"> Meanings of ' +
+                      res['Heading'] +
               '</div>';
     
     var categories = '';
     var hidden_categories = '';
     var nhidden = 0;
-    for (var i = 0; i < /*res['RelatedTopics'].length*/ 4; i++){
+    var cat_img = '';
+
+    for (var i = 0; i < 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
-
+      
+        cat_img = (res['RelatedTopics'][i]['Icon']['URL'] === "") ? '' : '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';        
+        
         if (i <= 2) {
-            categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'" onclick="window.location.href=this.lastChild.firstChild.href;">' +
+            categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'"' +
+                            'onclick="window.location.href=\'' + res['RelatedTopics'][i]['FirstURL'] +'\'">' +
                             '<div class="icon_category">' +
-                                '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
+                                cat_img +
                             '</div>' +
                             '<div class="ddg_zeroclick_category_item">' +
-              res['RelatedTopics'][i]['Icon']['URL'] + res['RelatedTopics'][i]['Result'] +
+                               res['RelatedTopics'][i]['Result'] +
                             '</div>' +
                           '</div>';
-        } else {
-            hidden_categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'" onclick="window.location.href=this.lastChild.firstChild.href;">' +
-                                '<div class="ddg_zeroclick_img" class="icon_category">' +
-                                    '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' +
-                                '</div>' +
-                                '<div class="ddg_zeroclick_category_item">' +
-                                    res['RelatedTopics'][i]['Result'] +
-                                '</div>' +
-                              '</div>';
-
-            nhidden++;
-        }
-
+        } 
     }
-    
-    /*if (hidden_categories !== '') {
-        hidden_categories = '<div class="category_more"  onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'category_more\'" onclick="this.firstChild.onclick();this.className=\'category_more\';this.onmouseover=function(){}">' +
-                                '<a href="javascript:;" onclick="' +
-                                    "this.parentElement.style.display='none';" +
-                                    "this.parentElement.nextElementSibling.style.display='block'" +
-                                '"> More ('+ nhidden + ')</a>' +
-                             '</div>' +
-                                '<div style="display:none">' +
-                                    hidden_categories+
-                                '</div>';
- 
-    }*/
 
     result += '<div id="ddg_zeroclick_abstract">' +
                     categories +
-                    /*hidden_categories +*/
                 '</div>';
                 
-     result += '<br /><div id="others_div">' + 
+    result += '<br /><div id="others_div">' + 
                   '<a class="ddg_more" href="https://duckduckgo.com/?q='+
                     encodeURIComponent(query)
                 +'"> See other results </a>' +
@@ -452,7 +414,7 @@ function loadSetts()
 {
     ddgSets = new GetDDGSettings()
     var select = document.getElementById("colors");
-    select.options[select.options.].selected = true;
+    select.options[select.options.selectedIndex].selected = true;
 	  System.Gadget.onSettingsClosing = ClosingSets;
 }
 

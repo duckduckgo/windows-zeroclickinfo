@@ -132,7 +132,7 @@ body
     padding: 5px 0px 2px 2px;
     position: absolute;
     right: 8px;
-    top: 115px;
+    top: 100px;
 }
 
 #ddg_zeroclick_abstract {
@@ -234,7 +234,7 @@ body
 }
 
 .ddg_selected{
-    background-color: #efefef !important;
+    background-color: #FCF5AA !important;
     border-radius: 2px;
     /*border: 1px solid #c2c2c2;
     border: 1px solid #c2c2c2 !important;*/
@@ -255,23 +255,32 @@ body
 .icon_category {
     text-align: right;
     width: 58px;
-    max-height: 50px;
+    height: expression(50 + "px");
+    padding-top: 5px;
+    float: left;
+    display: block;
 }
 
 .icon_category img {
-    max-height: 50px;
-    max-width: 50px;
+    height: expression(50 + "px");
+    width: expression(50 + "px");
+    display: inline;
+    float: left;
+    margin-top: 2px;
+    padding-right: 3px;
 }
 
 .ddg_zeroclick_category_item {
     line-height: 1.4;
     padding: 4px;
-    min-height: 30px;
-    margin-left: 62px;
+    float: left;
+    font-size: 0.9em
+    word-wrap: break-word;
+    margin-left: 5px;
 }
 
 .ddg_zeroclick_category_item a {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .disambig_holder {
@@ -297,7 +306,7 @@ body
 
 .category_more {
     padding: 4px;
-    margin-left: 62px !important;
+    margin-left: 1px !important;
 }
 
 
@@ -364,7 +373,7 @@ body
 }
 
 .disambig_selected {
-  background-color: #efefef !important;
+  background-color: #FCF5AA !important;
   border-radius: 2px;
   border: 1px solid #c2c2c2 !important;
   cursor: pointer;
