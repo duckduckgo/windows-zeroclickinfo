@@ -379,6 +379,27 @@ body
   cursor: pointer;
 }
 
+.ddg_close_zeroclick {
+  float: right;
+  cursor: pointer;
+  color: #000;
+  margin-top: -25px;
+}
+
+.ddg_close_zeroclick:hover {
+  text-decoration: underline;  
+}
+
+.ddg_close_zeroclick_answer {
+  float: right;
+  cursor: pointer;
+  color: #000;
+  margin-top: -15px;
+}
+
+.ddg_close_zeroclick_answer:hover {
+  text-decoration: underline;  
+}
 
 .clear {
     clear: both;

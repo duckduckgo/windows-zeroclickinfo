@@ -51,7 +51,8 @@ function createRedirDiv(redirect){
     if (ddg_result !== null){
       ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>' + 
                                 '<a id="redirect" href="' + redirect + 
-                                '"> Redirect there</a>';
+                                '"> Redirect there</a>' + 
+                              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
     }
 }
 
@@ -74,7 +75,7 @@ function displayAnswer(res, answer)
     
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
-    ddg_result.innerHTML = answer;
+    ddg_result.innerHTML = answer + '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
 }
 
 function displaySummary(res, query) {
@@ -131,7 +132,8 @@ function displaySummary(res, query) {
     result += '<div id="ddg_zeroclick_header">' +
                 '<a href="' + res['AbstractURL'] + '">'+
                     (res['Heading'] === ''? "&nbsp;": res['Heading']) +
-                '</a></div>';
+                '</a>' +
+                '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/></div>';
     
     
     var source_base_url = res['AbstractURL'].match(/http.?:\/\/(.*?\.)?(.*\..*?)\/.*/)[2];
@@ -182,6 +184,7 @@ function displaySummary(res, query) {
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result ;
+    showZeroClick();
 }
 
 function disambigClick (topic)
@@ -198,7 +201,8 @@ function displayDisambiguation(res, query){
     var result = '';
     result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
                       encodeURIComponent(query) +'"> Meanings of ' +
-                    res['Heading']  +
+                    res['Heading']  + '</a>' + 
+              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' +
               '</div>';
 
     var disambigs = ''
@@ -250,13 +254,15 @@ function displayDisambiguation(res, query){
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
+    showZeroClick();
 }
 
 function displayCategory(res, query){
     var result = '';
     result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
                       encodeURIComponent(query) +'"> Meanings of ' +
-                      res['Heading'] +
+                      res['Heading'] + '</a>' +
+              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' +
               '</div>';
     
     var categories = '';
@@ -296,6 +302,7 @@ function displayCategory(res, query){
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
+    showZeroClick();
 }
 
 function renderZeroClick(res, query)
