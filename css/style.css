@@ -2,8 +2,7 @@ body
 {
   font-family: "Helvetica Neue","Segoe UI",Arial,sans-serif;
   margin: 0;
-  width: 400px;   /*560*/
- /* height: 330px;*/
+  width: 400px;
   font-size: 13px;
   height: expression( document.body.clientHeight < 776 ? "777px" : "auto" );
 }

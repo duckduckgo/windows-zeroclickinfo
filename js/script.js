@@ -176,7 +176,7 @@ function displaySummary(res, query) {
                   '</div><div class="clear"></div>';
     }
           
-     result += '<br /><div id="others_div">' + 
+    result += '<br /><div id="others_div">' + 
                   '<a class="ddg_more" href="https://duckduckgo.com/?q='+
                     encodeURIComponent(query)
                 +'"> See other results </a>' +
@@ -363,7 +363,7 @@ function initDDG () {
 
     //nasty hack
     setInterval( function(){
-        document.body.style.height = (60 + document.getElementById('results').clientHeight) + "px";
+        document.body.style.height = (59 + document.getElementById('results').clientHeight) + "px";
       }, 200);
 
 
