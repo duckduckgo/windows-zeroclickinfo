@@ -13,7 +13,8 @@ function nothingFound(query)
                                 'No zero click results found.' + 
                                 '<a id="nothing_found_more" href="https://duckduckgo.com/?q='+
                                     encodeURIComponent(query)
-                                +'"> See DuckDuckGo results </a>';
+                                +'"> See DuckDuckGo results </a>' + 
+                              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
     }
 }
 
