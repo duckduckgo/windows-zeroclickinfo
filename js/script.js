@@ -339,10 +339,12 @@ function renderZeroClick(res, query)
     }
 }
 
-function query(q, callback){
+function query(q, callback, meaning){
   var req = new XMLHttpRequest();
-  req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1', true);
-
+  if (meaning)
+  	req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1&d=1', true);
+  else
+  	req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1', true);  	
   req.onreadystatechange = function(data) {
       if (req.readyState != 4) { return; }
       var res = JSON.parse(req.responseText);
