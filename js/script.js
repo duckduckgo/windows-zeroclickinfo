@@ -190,15 +190,15 @@ function displaySummary(res, query) {
 
 function disambigClick (topic)
 {
-    if (topic["Text"] !== ""){
-        var str = topic["Text"].split(","); 
-        document.getElementById('search_wrapper').value = str[0];
-        document.getElementById('search_button').click();
-    }
+    var dis_href = topic.match(/http:\/\/.*\/(.*)/)[1];
+    dis_href = dis_href.replace("_", " ");    
+
+    document.getElementById('search_wrapper').value = dis_href;
+    search(dis_href.toLowerCase());
 }
 
-function displayDisambiguation(res, query){
-    
+function displayDisambiguation(res, query)
+{    
     var result = '';
     result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
                       encodeURIComponent(query) +'"> Meanings of ' +
@@ -212,13 +212,13 @@ function displayDisambiguation(res, query){
     var nhidden = 0;
     var icon_dis = '';
 
-   for (var i = 0; i < 4; i++){
+
+    for (var i = 0; i < 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
 
         if (res['RelatedTopics'][i]['Topics'])
             break;
-
 
         if (res['RelatedTopics'][i]['Icon']['URL'] !== '')
             icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
@@ -229,7 +229,7 @@ function displayDisambiguation(res, query){
         if (i <= 3) {
             disambigs += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
                       +     'onmouseout="this.className=\'wrapper\'"' 
-                      +  'onclick="window.location.href=\'' + res['RelatedTopics'][i]['FirstURL'] +'\'">' 
+                      +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['FirstURL'] +'\');">'
                       + '<div class="icon_disambig">' 
                       +     icon_dis 
                       + '</div>' 
@@ -246,7 +246,7 @@ function displayDisambiguation(res, query){
                   /*others +*/
               '</div><div class="clear"></div>';
      
-     result += '<br /><div id="others_div">' + 
+    result += '<br /><div id="others_div">' + 
                   '<a class="ddg_more" href="https://duckduckgo.com/?q='+
                     encodeURIComponent(query)
                 +'"> See other results </a>' +
@@ -279,7 +279,7 @@ function displayCategory(res, query){
         
         if (i <= 2) {
             categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'"' +
-                            'onclick="window.location.href=\'' + res['RelatedTopics'][i]['FirstURL'] +'\'">' +
+                            'onclick="disambigClick(\''+ res['RelatedTopics'][i]['FirstURL'] +'\');">' +
                             '<div class="icon_category">' +
                                 cat_img +
                             '</div>' +
