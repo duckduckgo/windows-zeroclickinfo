@@ -233,15 +233,14 @@ function displayDisambiguation(res, query)
     var others = '';
     var nhidden = 0;
     var icon_dis = '';
-
+    var j = 0;
 
     for (var i = 0; i < 4; i++){
         if (res['RelatedTopics'].length === 0)
             break;
-
-        if (res['RelatedTopics'][i]['Topics'] && i !== 0)
+  
+        if (res['RelatedTopics'][i]['Topics']  && i > 3)
             break;
-        
 
         if (i <= 3 && res['RelatedTopics'][i]['Result']) {
             icon_dis = res['RelatedTopics'][i]['Icon']['URL'] !== '' ?
@@ -257,13 +256,10 @@ function displayDisambiguation(res, query)
                       +        res['RelatedTopics'][i]['Result'] 
                       +   '</div>' 
                       + '</div>';
-        }
-        
-        if (i <= 3 && res['RelatedTopics'][i]['Topics']) {
-            for (var j in res['RelatedTopics'][i]['Topics']){
-                disambigs += displayDisambiguationTopic(res, query, i, j);
-            }
-        }
+          } else if (i <= 3 && res['RelatedTopics'][i]['Topics']) {
+              disambigs += displayDisambiguationTopic(res, query, i, j);
+              j++;
+          }
     }
     
     result += '<div id="ddg_zeroclick_abstract">' +
@@ -386,8 +382,8 @@ function search(q){
 }
 
 function initDDG () {
-    System.Gadget.settingsUI = "settings.html";
-    System.Gadget.onSettingsClosed = setSettings;
+    //System.Gadget.settingsUI = "settings.html";
+    //System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
@@ -450,7 +446,7 @@ function loadSetts()
 {
     ddgSets = new GetDDGSettings()
     var select = document.getElementById("colors");
-    select.options[select.options.selectedIndex].selected = true;
+    //select.options[select.options.selectedIndex].selected = true;
 	  System.Gadget.onSettingsClosing = ClosingSets;
 }
 
