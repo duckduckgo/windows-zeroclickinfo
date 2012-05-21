@@ -197,24 +197,28 @@ function disambigClick (topic)
     search(dis_href.toLowerCase());
 }
 
-function displayDisambiguationTopic(res, query, i, j)
+function displayDisambiguationTopic(res, query, i)
 {
     var topics = '';
     var icon_dis;
 
-    icon_dis = res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] !== '' ? 
-        icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] +'" />' : '';
+    for (var j in res['RelatedTopics'][i]['Topics']){
+        if (j + i > 3) break;
 
-    topics += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
-           +     'onmouseout="this.className=\'wrapper\'"' 
-           +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['Topics'][j]['FirstURL'] +'\');">'
-           + '<div class="icon_disambig">' 
-           +     icon_dis 
-           + '</div>' 
-           + '<div class="ddg_zeroclick_disambig">' 
-           +        res['RelatedTopics'][i]['Topics'][j]['Result'] 
-           +   '</div>' 
-           + '</div>';
+        icon_dis = res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] !== '' ? 
+            icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] +'" />' : '';
+
+        topics += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
+               +     'onmouseout="this.className=\'wrapper\'"' 
+               +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['Topics'][j]['FirstURL'] +'\');">'
+               + '<div class="icon_disambig">' 
+               +     icon_dis 
+               + '</div>' 
+               + '<div class="ddg_zeroclick_disambig">' 
+               +        res['RelatedTopics'][i]['Topics'][j]['Result'] 
+               +   '</div>' 
+               + '</div>';
+    }
 
     return topics;
 }
@@ -236,13 +240,14 @@ function displayDisambiguation(res, query)
     var j = 0;
 
     for (var i = 0; i < 4; i++){
-        if (res['RelatedTopics'].length === 0)
+        if (res['RelatedTopics'].length === 0 && !(res['RelatedTopics'][i]['Topics'])) { 
+            break; 
+        }else if (!res['RelatedTopics'][i]['Result'] && res['RelatedTopics'][i]['Topics'] && i < 3){
+            disambigs += displayDisambiguationTopic (res, query, i);
             break;
-  
-        if (res['RelatedTopics'][i]['Topics']  && i > 3)
-            break;
+        }
 
-        if (i <= 3 && res['RelatedTopics'][i]['Result']) {
+        if (i < 3 && res['RelatedTopics'][i]['Result']) {
             icon_dis = res['RelatedTopics'][i]['Icon']['URL'] !== '' ?
                       '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' : ''
 
@@ -256,10 +261,7 @@ function displayDisambiguation(res, query)
                       +        res['RelatedTopics'][i]['Result'] 
                       +   '</div>' 
                       + '</div>';
-          } else if (i <= 3 && res['RelatedTopics'][i]['Topics']) {
-              disambigs += displayDisambiguationTopic(res, query, i, j);
-              j++;
-          }
+          } 
     }
     
     result += '<div id="ddg_zeroclick_abstract">' +
