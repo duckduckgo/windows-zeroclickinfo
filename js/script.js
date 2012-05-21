@@ -197,6 +197,30 @@ function disambigClick (topic)
     search(dis_href.toLowerCase());
 }
 
+function displayDisambiguationTopic(res, query, i, j)
+{
+    var topics = '';
+    var icon_dis;
+
+    if (res['RelatedTopics'][i]['Topics'][i]['Icon']['URL'] !== '')
+        icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][i]['Icon']['URL'] +'" />';
+    else 
+        icon_dis = '';
+
+    topics += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
+           +     'onmouseout="this.className=\'wrapper\'"' 
+           +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['Topics'][j]['FirstURL'] +'\');">'
+           + '<div class="icon_disambig">' 
+           +     icon_dis 
+           + '</div>' 
+           + '<div class="ddg_zeroclick_disambig">' 
+           +        res['RelatedTopics'][i]['Topics'][j]['Result'] 
+           +   '</div>' 
+           + '</div>';
+
+    return topics;
+}
+
 function displayDisambiguation(res, query)
 {    
     var result = '';
@@ -217,16 +241,16 @@ function displayDisambiguation(res, query)
         if (res['RelatedTopics'].length === 0)
             break;
 
-        if (res['RelatedTopics'][i]['Topics'])
+        if (res['RelatedTopics'][i]['Topics'] && i !== 0)
             break;
-
-        if (res['RelatedTopics'][i]['Icon']['URL'] !== '')
-            icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
-        else 
-            icon_dis = '';
         
 
-        if (i <= 3) {
+        if (i <= 3 && res['RelatedTopics'][i]['Result']) {
+            if (res['RelatedTopics'][i]['Icon']['URL'] !== '')
+                icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
+            else 
+                icon_dis = '';
+
             disambigs += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
                       +     'onmouseout="this.className=\'wrapper\'"' 
                       +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['FirstURL'] +'\');">'
@@ -237,7 +261,13 @@ function displayDisambiguation(res, query)
                       +        res['RelatedTopics'][i]['Result'] 
                       +   '</div>' 
                       + '</div>';
-        } 
+        }
+        
+        if (i <= 3 && res['RelatedTopics'][i]['Topics']) {
+            for (var j in res['RelatedTopics'][i]['Topics']){
+                disambigs += displayDisambiguationTopic(res, query, i, j);
+            }
+        }
     }
     
     result += '<div id="ddg_zeroclick_abstract">' +
@@ -341,10 +371,12 @@ function renderZeroClick(res, query)
 
 function query(q, callback, meaning){
   var req = new XMLHttpRequest();
+
   if (meaning)
   	req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1&d=1', true);
   else
-  	req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1', true);  	
+  	req.open('GET', 'http://api.duckduckgo.com?q=' + encodeURIComponent(q) + '&format=json&no_redirect=1', true);  
+	
   req.onreadystatechange = function(data) {
       if (req.readyState != 4) { return; }
       var res = JSON.parse(req.responseText);
