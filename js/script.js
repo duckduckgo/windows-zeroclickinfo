@@ -202,10 +202,8 @@ function displayDisambiguationTopic(res, query, i, j)
     var topics = '';
     var icon_dis;
 
-    if (res['RelatedTopics'][i]['Topics'][i]['Icon']['URL'] !== '')
-        icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][i]['Icon']['URL'] +'" />';
-    else 
-        icon_dis = '';
+    icon_dis = res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] !== '' ? 
+        icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] +'" />' : '';
 
     topics += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
            +     'onmouseout="this.className=\'wrapper\'"' 
@@ -246,10 +244,8 @@ function displayDisambiguation(res, query)
         
 
         if (i <= 3 && res['RelatedTopics'][i]['Result']) {
-            if (res['RelatedTopics'][i]['Icon']['URL'] !== '')
-                icon_dis = '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';
-            else 
-                icon_dis = '';
+            icon_dis = res['RelatedTopics'][i]['Icon']['URL'] !== '' ?
+                      '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' : ''
 
             disambigs += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
                       +     'onmouseout="this.className=\'wrapper\'"' 
@@ -272,8 +268,6 @@ function displayDisambiguation(res, query)
     
     result += '<div id="ddg_zeroclick_abstract">' +
                   disambigs +
-                  /*hidden_disambigs +*/
-                  /*others +*/
               '</div><div class="clear"></div>';
      
     result += '<br /><div id="others_div">' + 
