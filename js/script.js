@@ -202,6 +202,9 @@ function displayDisambiguation(res, query)
     var j = 0;
 
     for (var i = 0; i < 4; i++){
+        if (i === res['RelatedTopics'].length)
+            break;
+
         if (res['RelatedTopics'].length === 0) { 
             break; 
         }else if (!res['RelatedTopics'][i]['Result'] && res['RelatedTopics'][i]['Topics'] && i < 3){
