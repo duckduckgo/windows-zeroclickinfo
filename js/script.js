@@ -151,10 +151,11 @@ function displaySummary(res, query) {
 function disambigClick (topic)
 {
     var dis_href = topic.match(/http:\/\/.*\/(.*)/)[1];
+    dis_href = dis_href.replace(/%2C/gi, ",");
     dis_href = dis_href.replace(/_/gi, " ");    
 
     document.getElementById('search_wrapper').value = dis_href;
-    search(dis_href.toLowerCase());
+    search(dis_href.toLowerCase(), true);
 }
 
 function displayDisambiguationTopic(res, query, i)
@@ -337,10 +338,10 @@ function query(q, callback, meaning){
   req.send(null);
 }
 
-function search(q){   
+function search(q, meanings){   
     query(q, function(response){
         renderZeroClick(response, q);
-    });
+    }, meanings);
 }
 
 function initDDG () {
@@ -366,7 +367,7 @@ function initDDG () {
     document.getElementById("search_button").onclick = function(){
       var el = document.getElementById('search_wrapper');
       if (el.value !== '')
-          search(el.value);
+          search(el.value, false);
       else
           return false;
     };
@@ -375,7 +376,7 @@ function initDDG () {
       var el = document.getElementById('search_wrapper');
       if (key === 13){
         if (el.value !== ""){
-          search(el.value);
+          search(el.value, false);
         }else
           return false;
       }else 
