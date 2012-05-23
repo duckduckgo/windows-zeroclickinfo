@@ -1,10 +1,3 @@
-var sets;
-
-function setHeight (element)
-{ 
-  return;
-}
-
 function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
@@ -337,7 +330,7 @@ function search(q, meanings){
 
 function initDDG () {
     System.Gadget.settingsUI = "settings.html";
-    System.Gadget.onSettingsClosed = setSettings;
+	  System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
@@ -382,39 +375,26 @@ function initDDG () {
  *
  *   SETTINGS
  *
- ************************/
-
-var bckg = "red";
-
-var colorsArr = new Array ( ["Red (default)", "red"],
-                            ["Blue", "blue"],
-                            ["Green", "green"],
-                            ["Orange", "orange"],
-                            ["Purple", "purple"],
-                            ["Light Blue", "light_blue"],
-                            ["Light Green", "light_green" ] );
-
+ *************************/
 var ddgSets;	
 
 function loadSetts()
 {
     ddgSets = new GetDDGSettings()
-    var select = document.getElementById("colors");
-    //select.options[select.options.selectedIndex].selected = true;
+    colors.value = ddgSets.background === '' ? "red" : ddgSets.background;
 	  System.Gadget.onSettingsClosing = ClosingSets;
 }
 
 function GetDDGSettings()
 {
-    this.background = System.Gadget.Settings.read("background");
+    this.background = System.Gadget.Settings.readString("background");
     this.gviewed = System.Gadget.Settings.read("GadgetViewed");
 }
 
 function SaveSettings()
 {  
-    bckg = colors.value;    		
-    System.Gadget.Settings.write("background", bckg);
-    ddgSets.background = bckg;
+    System.Gadget.Settings.writeString("background", colors.value);
+    ddgSets.background = colors.value;
 }
 
 function setSettings()
@@ -425,21 +405,12 @@ function setSettings()
     bg.style.backgroundRepeat = "repeat-x scroll 0 0 #CD473B";
 }
 
-
-//when the Settings are closing
+//do this before close sets
 function ClosingSets(event)
 {
 	if (event.closeAction == event.Action.commit){
 		  System.Gadget.Settings.write("GadgetViewed","yes");
       SaveSettings();
-	}else if(event.closeAction == event.Action.cancel){}
+	}
 	event.cancel = false;
 }
-
-
-
-
-
-
-
-
