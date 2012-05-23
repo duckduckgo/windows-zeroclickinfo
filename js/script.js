@@ -104,7 +104,8 @@ function displaySummary(res, query) {
     
     var source_base_url = res['AbstractURL'].match(/http.?:\/\/(.*?\.)?(.*\..*?)\/.*/)[2];
 
-    result += '<div id="ddg_zeroclick_abstract">' +
+    if (res['Image'] !== ""){
+        result += '<div id="ddg_zeroclick_abstract">' +
                     '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
                     res['AbstractURL'] +'\'">' +
 
@@ -116,14 +117,25 @@ function displaySummary(res, query) {
                         '</a>' + official_site +
                     '</div></div>' +
                   '</div><div class="clear"></div>';
-      
-    if (res['Image']){
+
         result += '<div id="ddg_zeroclick_image">' +
                     '<a href="' + img_url +'">' +
                         '<img class="ddg_zeroclick_img" src="' + res['Image'] + '"/>' +
                     '</a></div>';
-    }
+    }else {
+        result += '<div id="ddg_zeroclick_abstract_full">' +
+                    '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
+                    res['AbstractURL'] +'\'"/>' +
 
+                    '<p>' + res['Abstract'] + '</p></div>' +
+                    '<div id="ddg_zeroclick_official_links">' +
+                        '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
+                        '<a href="' + res['AbstractURL'] + '"> More at ' +
+                            res['AbstractSource'] +
+                        '</a>' + official_site +
+                    '</div></div>' +
+                  '</div><div class="clear"></div>';
+    }
           
     result += '<br /><div id="others_div">' + 
                   '<a class="ddg_more" href="https://duckduckgo.com/?q='+
