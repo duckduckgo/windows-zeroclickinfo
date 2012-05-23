@@ -377,6 +377,7 @@ function initDDG () {
  *
  *************************/
 var ddgSets;	
+var sets;
 
 function loadSetts()
 {
