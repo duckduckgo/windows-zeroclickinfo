@@ -132,11 +132,10 @@ function displaySummary(res, query) {
 function disambigClick (topic)
 {
     var dis_href = topic.match(/http:\/\/.*\/(.*)/)[1];
-    dis_href = dis_href.replace(/%2C/gi, ",");
     dis_href = dis_href.replace(/_/gi, " ");    
 
-    document.getElementById('search_wrapper').value = dis_href;
-    search(dis_href.toLowerCase(), true);
+    document.getElementById('search_wrapper').value = decodeURIComponent(dis_href);
+    search(decodeURIComponent(dis_href).toLowerCase(), true);
 }
 
 function displayDisambiguationTopic(res, query, i)
