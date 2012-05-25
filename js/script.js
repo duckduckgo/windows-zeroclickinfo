@@ -6,7 +6,7 @@ function nothingFound(query)
                              +  'No zero click results found.'  
                              +  '<a id="nothing_found_more" href="https://duckduckgo.com/?q='
                              +      encodeURIComponent(query)
-                             +  '"> See DuckDuckGo results </a>'  
+                             +  '">See DuckDuckGo results </a>'  
                              +  '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
     }
 }
@@ -88,41 +88,46 @@ function displaySummary(res, query) {
         }
     }
 
-    result += '<div id="ddg_zeroclick_header">' +
-                '<a href="' + res['AbstractURL'] + '">'+
-                    (res['Heading'] === ''? "&nbsp;": res['Heading']) +
-                '</a>' +
-                '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/></div>';
+    result += '<div id="ddg_zeroclick_header">'
+           +    '<a href="' + res['AbstractURL'] + '">'
+           +        (res['Heading'] === ''? "&nbsp;": res['Heading']) 
+           +    '</a>' 
+           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>'
+           +  '</div>';
     
     
     var source_base_url = res['AbstractURL'].match(/http.?:\/\/(.*?\.)?(.*\..*?)\/.*/)[2];
 
     
-    result += '<div id="' + wrapper_class + '">' +
-                '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\''+ 
-                res['AbstractURL'] +'\'">' +
-
-                '<p>' + res['Abstract'] + '</p></div>' +
-                '<div id="ddg_zeroclick_official_links">' +
-                    '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />' +
-                    '<a href="' + res['AbstractURL'] + '"> More at ' +
-                        res['AbstractSource'] +
-                    '</a>' + official_site +
-                '</div></div>' +
-              '</div><div class="clear"></div>';
+    result += '<div id="' + wrapper_class + '">' 
+           +    '<div onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'\'" onclick="window.location.href=\'' 
+           +      res['AbstractURL'] +'\'">' 
+           +      '<p>' + res['Abstract'] + '</p>'
+           +    '</div>' 
+           +    '<div id="ddg_zeroclick_official_links">' 
+           +      '<img src="http://duckduckgo.com/i/'+ source_base_url +'.ico" />'
+           +      '<a href="' + res['AbstractURL'] + '"> More at ' 
+           +          res['AbstractSource'] 
+           +      '</a>' + official_site 
+           +    '</div>'
+           +  '</div>' 
+           +  '<div class="clear"></div>';
 
     if (res['Image'] !== ""){
-        result += '<div id="ddg_zeroclick_image">' +
-                    '<a href="' + img_url +'">' +
-                        '<img class="ddg_zeroclick_img" src="' + res['Image'] + '"/>' +
-                    '</a></div>';
+        result += '<div id="ddg_zeroclick_image">' 
+               +    '<a href="' + img_url +'">'
+               +      '<img class="ddg_zeroclick_img" src="' + res['Image'] + '"/>' 
+               +    '</a>'
+               +  '</div>';
     }
           
-    result += '<br /><div id="others_div">' + 
-                  '<a class="ddg_more" href="https://duckduckgo.com/?q='+
-                    encodeURIComponent(query)
-                +'"> See other results </a>' +
-               '<img src="css/imgs/icon_16.png"/></div>';
+    result += '<br />'
+           +  '<div id="others_div">'  
+           +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
+           +        encodeURIComponent(query)
+           +    '"> See other results </a>' 
+           +    '<img src="css/imgs/icon_16.png"/>'
+           +  '</div>';
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
@@ -227,11 +232,13 @@ function displayDisambiguation(res, query)
 
 function displayCategory(res, query){
     var result = '';
-    result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
-                      encodeURIComponent(query) +'"> Meanings of ' +
-                      res['Heading'] + '</a>' +
-              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' +
-              '</div>';
+    result += '<div id="ddg_zeroclick_header">'
+           +    '<a href="https://duckduckgo.com/?q='  
+           +      encodeURIComponent(query) +'"> Meanings of ' 
+           +      res['Heading'] 
+           +    '</a>' 
+           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' 
+           +  '</div>';
     
     var categories = '';
     var hidden_categories = '';
@@ -245,27 +252,29 @@ function displayCategory(res, query){
         cat_img = (res['RelatedTopics'][i]['Icon']['URL'] === "") ? '' : '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />';        
         
         if (i <= 2) {
-            categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'"' +
-                            'onclick="disambigClick(\''+ res['RelatedTopics'][i]['FirstURL'] +'\');">' +
-                            '<div class="icon_category">' +
-                                cat_img +
-                            '</div>' +
-                            '<div class="ddg_zeroclick_category_item">' +
-                               res['RelatedTopics'][i]['Result'] +
-                            '</div>' +
-                          '</div>';
+            categories += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'" onmouseout="this.className=\'wrapper\'"' 
+                       +        'onclick="disambigClick(\''+ res['RelatedTopics'][i]['FirstURL'] +'\');">' 
+                       +    '<div class="icon_category">' 
+                       +      cat_img 
+                       +    '</div>' 
+                       +    '<div class="ddg_zeroclick_category_item">' 
+                       +      res['RelatedTopics'][i]['Result'] 
+                       +    '</div>'
+                       +  '</div>';
         } 
     }
 
-    result += '<div id="ddg_zeroclick_abstract">' +
-                    categories +
-                '</div>';
+    result += '<div id="ddg_zeroclick_abstract">' 
+           +    categories
+           +  '</div>';
                 
-    result += '<br /><div id="others_div">' + 
-                  '<a class="ddg_more" href="https://duckduckgo.com/?q='+
-                    encodeURIComponent(query)
-                +'"> See other results </a>' +
-               '<img src="css/imgs/icon_16.png"/></div>';       
+    result += '<br />'
+           +  '<div id="others_div">'  
+           +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
+           +      encodeURIComponent(query)
+           +    '"> See other results </a>' 
+           +    '<img src="css/imgs/icon_16.png"/>'
+           +  '</div>';       
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
@@ -388,7 +397,6 @@ function loadSetts()
 function GetDDGSettings()
 {
     this.background = System.Gadget.Settings.readString("background");
-    this.gviewed = System.Gadget.Settings.read("GadgetViewed");
 }
 
 function SaveSettings()
@@ -400,16 +408,16 @@ function SaveSettings()
 function setSettings()
 {
     sets = new GetDDGSettings();
+    var transparency = sets.background === "red" ? "#CD473B" : "transparent";
     var bg = document.getElementById('header');
     bg.style.backgroundImage = 'url("css/imgs/bckgs/' + sets.background +'.png")';
-    bg.style.backgroundRepeat = "repeat-x scroll 0 0 #CD473B";
+    bg.style.backgroundRepeat = "repeat-x scroll 0 0 " + transparency;
 }
 
 //do this before close sets
 function ClosingSets(event)
 {
 	if (event.closeAction == event.Action.commit){
-		  System.Gadget.Settings.write("GadgetViewed","yes");
       SaveSettings();
 	}
 	event.cancel = false;
