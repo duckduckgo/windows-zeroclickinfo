@@ -148,23 +148,23 @@ function displayDisambiguationTopic(res, query, i)
     var topics = '';
     var icon_dis;
 
-    for (var j in res['RelatedTopics'][i]['Topics']){
-        if (j + i > 3) 
+    for (var j = 0; j < res['RelatedTopics'][i]['Topics'].length; j++){
+        if (j + i >= 3)
             break;
 
         icon_dis = res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] !== '' ? 
-            icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] +'" />' : '';
+                  icon_dis = '<img src="' + res['RelatedTopics'][i]['Topics'][j]['Icon']['URL'] +'"/>' : '';
 
         topics += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
-               +     'onmouseout="this.className=\'wrapper\'"' 
-               +     'onclick="disambigClick(\''+ res['RelatedTopics'][i]['Topics'][j]['FirstURL'] +'\');">'
-               + '<div class="icon_disambig">' 
-               +     icon_dis 
-               + '</div>' 
-               + '<div class="ddg_zeroclick_disambig">' 
+               +      'onmouseout="this.className=\'wrapper\'"' 
+               +      'onclick="disambigClick(\''+ res['RelatedTopics'][i]['Topics'][j]['FirstURL'] +'\');">'
+               +    '<div class="icon_disambig">' 
+               +      icon_dis 
+               +    '</div>' 
+               +    '<div class="ddg_zeroclick_disambig">' 
                +        res['RelatedTopics'][i]['Topics'][j]['Result'] 
-               +   '</div>' 
-               + '</div>';
+               +    '</div>' 
+               +  '</div>';
     }
 
     return topics;
@@ -173,11 +173,12 @@ function displayDisambiguationTopic(res, query, i)
 function displayDisambiguation(res, query)
 {    
     var result = '';
-    result += '<div id="ddg_zeroclick_header"> <a href="https://duckduckgo.com/?q=' + 
-                      encodeURIComponent(query) +'"> Meanings of ' +
-                    res['Heading']  + '</a>' + 
-              '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' +
-              '</div>';
+    result += '<div id="ddg_zeroclick_header">'
+           +    '<a href="https://duckduckgo.com/?q='  
+           +      encodeURIComponent(query) +'"> Meanings of ' + res['Heading']  
+           +    '</a>'  
+           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>'
+           +  '</div>';
 
     var disambigs = ''
     var hidden_disambigs = '';
@@ -337,8 +338,8 @@ function search(q, meanings){
 }
 
 function initDDG () {
-    System.Gadget.settingsUI = "settings.html";
-	  System.Gadget.onSettingsClosed = setSettings;
+    //System.Gadget.settingsUI = "settings.html";
+	  //System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
