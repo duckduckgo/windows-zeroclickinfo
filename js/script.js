@@ -2,11 +2,12 @@ function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
+        ddg_result.className = '';
         ddg_result.innerHTML =  '<img style="float: left;" src="css/imgs/icon_16.png"/>'  
                              +  'No zero click results found.'  
                              +  '<a id="nothing_found_more" href="https://duckduckgo.com/?q='
                              +      encodeURIComponent(query)
-                             +  '">See DuckDuckGo results </a>'  
+                             +  '">See DuckDuckGo results</a>'  
                              +  '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
     }
 }
@@ -36,7 +37,8 @@ function createResultDiv()
     if (ddg_result === null) {
         result.innerHTML = '<div id="ddg_zeroclick"></div>';
         ddg_result = document.getElementById("ddg_zeroclick");
-    }
+    } 
+
     return ddg_result;
 }
 
@@ -367,12 +369,9 @@ function initDDG () {
     document.getElementById("search_wrapper").onkeyup = function(){
       var key = event.keyCode;
       var el = document.getElementById('search_wrapper');
-      if (key === 13){
-        if (el.value !== ""){
+      if (key === 13 && el.value !== "")
           search(el.value, false);
-        }else
-          return false;
-      }else 
+      else 
         return false;
     };
 }
