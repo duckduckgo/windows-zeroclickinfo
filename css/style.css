@@ -233,7 +233,7 @@ body
 }
 
 .ddg_selected{
-    background-color: #FCF5AA !important;
+    background-color: #EFEFEF !important;
     border-radius: 2px;
     /*border: 1px solid #c2c2c2;
     border: 1px solid #c2c2c2 !important;*/
@@ -331,7 +331,7 @@ body
 }
 
 .ddg_more {
-    font-size: 80%;
+    font-size: 90%;
     float: left;
     padding-left: 10px;
     /*padding: 1px 20px 0 20px;*/
@@ -344,7 +344,24 @@ body
 
 .ddg_more:hover {
   text-decoration: underline;
-}   
+}  
+
+.ddg_more_answer {
+    font-size: 90%;
+    float: left;
+    /*padding-left: 10px;*/
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    height: 16px;
+    display: inline;
+}
+
+.ddg_more_answer:hover {
+  text-decoration: underline;
+}    
+
+
 
 #nothing_found_more {
   text-decoration: none;
@@ -372,7 +389,7 @@ body
 }
 
 .disambig_selected {
-  background-color: #FCF5AA !important;
+  background-color: #EFEFEF !important;
   border-radius: 2px;
   border: 1px solid #c2c2c2 !important;
   cursor: pointer;

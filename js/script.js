@@ -47,12 +47,12 @@ function createRedirDiv(redirect){
     if (ddg_result !== null){
       ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>'  
                            +   '<a id="redirect" href="' + redirect  
-                           +      '"> Redirect there</a>'  
+                           +      '">Redirect there</a>'  
                            + '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
     }
 }
 
-function displayAnswer(res, answer)
+function displayAnswer(res, answer, query)
 {
     var ddg = document.getElementById ('ddg_zeroclick');
     if (ddg === null){
@@ -72,6 +72,14 @@ function displayAnswer(res, answer)
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
     ddg_result.innerHTML = answer + '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
+    
+    ddg_result.innerHTML += '<br />'
+                         +  '<div id="others_div">'  
+                         +    '<a class="ddg_more_answer" href="https://duckduckgo.com/?q='
+                         +      encodeURIComponent(query)
+                         +    '">More results</a>' 
+                         +    '<img src="css/imgs/icon_16.png"/>'
+                         +  '</div>';
 }
 
 function displaySummary(res, query) {
@@ -127,7 +135,7 @@ function displaySummary(res, query) {
            +  '<div id="others_div">'  
            +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
            +        encodeURIComponent(query)
-           +    '"> See other results </a>' 
+           +    '">More results</a>' 
            +    '<img src="css/imgs/icon_16.png"/>'
            +  '</div>';
 
@@ -225,7 +233,7 @@ function displayDisambiguation(res, query)
            +  '<div id="others_div">'  
            +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
            +         encodeURIComponent(query)
-           +    '"> See other results </a>' 
+           +    '">More results</a>' 
            +  '<img src="css/imgs/icon_16.png"/></div>';         
 
     var ddg_result = createResultDiv();
@@ -275,7 +283,7 @@ function displayCategory(res, query){
            +  '<div id="others_div">'  
            +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
            +      encodeURIComponent(query)
-           +    '"> See other results </a>' 
+           +    '">More results</a>' 
            +    '<img src="css/imgs/icon_16.png"/>'
            +  '</div>';       
 
@@ -287,17 +295,17 @@ function displayCategory(res, query){
 function renderZeroClick(res, query)
 {
     if (res['AnswerType'] !== "") {
-        displayAnswer(res, res['Answer']);
+        displayAnswer(res, res['Answer'], query);
     } else if (res['Type'] == 'A' && res['Abstract'] !== "") {
         displaySummary(res, query);
     } else {
         switch (res['Type']){
             case 'E':
-                displayAnswer(res, res['Answer']);
+                displayAnswer(res, res['Answer'], query);
                 break;
 
             case 'A':
-                displayAnswer(res, res['Answer']);
+                displayAnswer(res, res['Answer'], query);
                 break;
 
             case 'C':
