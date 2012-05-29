@@ -143,7 +143,6 @@ body
     margin-top: 4px;
     word-wrap: break-word;
     width: 290px;
-    border: 1px solid #fafafa;
 }
 
 .ddg_abstract_text{
@@ -181,8 +180,6 @@ body
 }
 
 #ddg_zeroclick_official_links {
-    /*padding: 5px 0px 5px 0px;
-    display: inline;  */  
     margin-top: 10px;
 }
 
@@ -244,8 +241,6 @@ body
 }
 
 .icon_disambig img {
-    /*max-height: 40px;
-    max-width: 40px;*/
     width: expression(40 + "px");
     height: expression(40 + "px");
     display: inline;
@@ -426,4 +421,5 @@ body
     font-size: 0;
     line-height: 0;
 }
+
 

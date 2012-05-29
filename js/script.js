@@ -45,6 +45,7 @@ function createResultDiv()
 function createRedirDiv(redirect){
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
+      ddg_result.className = '';
       ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>'  
                            +   '<a id="redirect" href="' + redirect  
                            +      '">Redirect there</a>'  
@@ -210,7 +211,7 @@ function displayDisambiguation(res, query)
 
         if (i < 3 && res['RelatedTopics'][i]['Result']) {
             icon_dis = res['RelatedTopics'][i]['Icon']['URL'] !== '' ?
-                      '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' : ''
+                      '<img src="' + res['RelatedTopics'][i]['Icon']['URL'] +'" />' : '';
 
             disambigs += '<div class="wrapper" onmouseover="this.className+=\' ddg_selected\'"'
                       +       'onmouseout="this.className=\'wrapper\'"' 
@@ -227,7 +228,8 @@ function displayDisambiguation(res, query)
     
     result += '<div id="ddg_zeroclick_abstract">' 
            +      disambigs 
-           +  '</div><div class="clear"></div>';
+           +  '</div>'
+           +  '<div class="clear"></div>';
      
     result += '<br />'
            +  '<div id="others_div">'  
