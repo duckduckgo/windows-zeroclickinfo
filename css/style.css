@@ -63,6 +63,7 @@ body
 
 #logo {
   float:left;
+  border: none;
 }
 
 #search_button {  
