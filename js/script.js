@@ -1,15 +1,22 @@
+var cross = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>';
+var cross_answer = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/>';
+
 function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
-        ddg_result.className = '';
-        ddg_result.innerHTML =  '<img style="float: left;" src="css/imgs/icon_16.png"/>'  
-                             +  'No zero click results found.'  
+        ddg_result.className = 'ddg_answer';
+        ddg_result.innerHTML =  'No zero click results found.'  
                              +  '<a id="nothing_found_more" href="https://duckduckgo.com/?q='
                              +      encodeURIComponent(query)
                              +  '">See DuckDuckGo results</a>'  
-                             +  '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
+                             +  cross_answer;
     }
+}
+
+function more (query)
+{
+    window.location.href = "http://duckduckgo.com/?q=" + encodeURIComponent(query);
 }
 
 function hideZeroClick()
@@ -28,7 +35,6 @@ function showZeroClick()
     }
 }
 
-
 function createResultDiv()
 {  
     var result = document.getElementById("results");
@@ -45,24 +51,24 @@ function createResultDiv()
 function createRedirDiv(redirect){
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
-      ddg_result.className = '';
-      ddg_result.innerHTML = '<img style="float: left;" src="css/imgs/icon_16.png"/>'  
-                           +   '<a id="redirect" href="' + redirect  
-                           +      '">Redirect there</a>'  
-                           + '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
+      ddg_result.className = 'ddg_answer';
+      ddg_result.innerHTML = 'Wait for redirect or '  
+                           + '<a id="redirect" href="' + redirect + '">Click here</a>'
+                           + cross_answer;
     }
 }
 
 function displayAnswer(res, answer, query)
 {
-    var ddg = document.getElementById ('ddg_zeroclick');
+    var ddg = document.getElementById('ddg_zeroclick');
     if (ddg === null){
         createResultDiv();
     }   
     
-    if (res["Redirect"] !== ""){ 
-        createRedirDiv(res["Redirect"]);
-        document.getElementById('redirect').click();
+    if (res['Redirect'] !== ""){ 
+        createRedirDiv(res['Redirect']);
+        //document.getElementById('redirect').click();
+        window.location.href = res['Redirect'];
         return;
     }
 
@@ -72,9 +78,9 @@ function displayAnswer(res, answer, query)
     
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
-    ddg_result.innerHTML = answer + '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/></div>';
+    ddg_result.innerHTML = answer + cross_answer;
     
-    ddg_result.innerHTML += '<br />'
+    ddg_result.innerHTML += '<br /> <br />'
                          +  '<div id="others_div">'  
                          +    '<a class="ddg_more_answer" href="https://duckduckgo.com/?q='
                          +      encodeURIComponent(query)
@@ -103,7 +109,7 @@ function displaySummary(res, query) {
            +    '<a href="' + res['AbstractURL'] + '">'
            +        (res['Heading'] === ''? "&nbsp;": res['Heading']) 
            +    '</a>' 
-           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>'
+           +    cross
            +  '</div>';
     
     
@@ -188,7 +194,7 @@ function displayDisambiguation(res, query)
            +    '<a href="https://duckduckgo.com/?q='  
            +      encodeURIComponent(query) +'"> Meanings of ' + res['Heading']  
            +    '</a>'  
-           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>'
+           +    cross
            +  '</div>';
 
     var disambigs = ''
@@ -233,10 +239,11 @@ function displayDisambiguation(res, query)
      
     result += '<br />'
            +  '<div id="others_div">'  
-           +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
-           +         encodeURIComponent(query)
-           +    '">More results</a>' 
-           +  '<img src="css/imgs/icon_16.png"/></div>';         
+           +    '<a class="ddg_more" href="https://duckduckgo.com/?q=' + encodeURIComponent(query) + '">'    
+           +        'More results'
+           +    '</a>' 
+           +    '<img src="css/imgs/icon_16.png"/>'
+           +  '</div>';         
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
@@ -250,7 +257,7 @@ function displayCategory(res, query){
            +      encodeURIComponent(query) +'"> Meanings of ' 
            +      res['Heading'] 
            +    '</a>' 
-           +    '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>' 
+           +    cross 
            +  '</div>';
     
     var categories = '';

@@ -81,19 +81,6 @@ body
   background-position: 0 -37px;
 }  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ddg_zeroclick_icon {
     display: inline;
     float: left;
@@ -228,14 +215,14 @@ body
 
 .ddg_selected{
     background-color: #EFEFEF !important;
-    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
     border: 1px solid #c2c2c2 !important;
     cursor: pointer;
 }
 
 .ddg_summary_selected {
     background-color: #EFEFEF !important;
-    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
     border: 1px solid #c2c2c2 !important;
     cursor: pointer;
 }
@@ -308,8 +295,6 @@ body
 
 
 #ddg_zeroclick_category_img {
-    /*max-height: 30px;
-    max-width: 30px;*/
     width: expression(this.scrollWidth > 29 ? "30px" : "auto");
     height: expression(this.scrollHeight > 29 ? "30px" : "auto");
 }
