@@ -82,10 +82,11 @@ function displayAnswer(res, answer, query)
     
     ddg_result.innerHTML += '<br /> <br />'
                          +  '<div id="others_div">'  
-                         +    '<a class="ddg_more_answer" href="https://duckduckgo.com/?q='
+                         /*+    '<a class="ddg_more_answer" href="https://duckduckgo.com/?q='
                          +      encodeURIComponent(query)
                          +    '">More results</a>' 
-                         +    '<img src="css/imgs/icon_16.png"/>'
+                         +    '<img src="css/imgs/icon_16.png"/>'*/
+                         +    '<div id="more_results" onclick="more(\'' + query + '\')"/>' 
                          +  '</div>';
 }
 
@@ -140,10 +141,11 @@ function displaySummary(res, query) {
           
     result += '<br />'
            +  '<div id="others_div">'  
-           +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
+          /* +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
            +        encodeURIComponent(query)
            +    '">More results</a>' 
-           +    '<img src="css/imgs/icon_16.png"/>'
+           +    '<img src="css/imgs/icon_16.png"/>'*/
+           +  '<div id="more_results" onclick="more(\'' + query + '\')"/>'
            +  '</div>';
 
     var ddg_result = createResultDiv();
@@ -239,10 +241,10 @@ function displayDisambiguation(res, query)
      
     result += '<br />'
            +  '<div id="others_div">'  
-           +    '<a class="ddg_more" href="https://duckduckgo.com/?q=' + encodeURIComponent(query) + '">'    
+           /*+    '<a class="ddg_more" href="https://duckduckgo.com/?q=' + encodeURIComponent(query) + '">'    
            +        'More results'
-           +    '</a>' 
-           +    '<img src="css/imgs/icon_16.png"/>'
+           +    '</a>'*/
+           +    '<div id="more_results" onclick="more(\'' + query +'\')"/>' 
            +  '</div>';         
 
     var ddg_result = createResultDiv();
@@ -290,10 +292,11 @@ function displayCategory(res, query){
                 
     result += '<br />'
            +  '<div id="others_div">'  
-           +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
+           /*+    '<a class="ddg_more" href="https://duckduckgo.com/?q='
            +      encodeURIComponent(query)
            +    '">More results</a>' 
-           +    '<img src="css/imgs/icon_16.png"/>'
+           +    '<img src="css/imgs/icon_16.png"/>'*/
+           +    '<div id="more_results" onclick="more(\'' + query +'\')" />' 
            +  '</div>';       
 
     var ddg_result = createResultDiv();

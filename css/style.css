@@ -19,6 +19,17 @@ body
   margin-left: 20px;
 }
 
+#more_results {
+  background-image: url(imgs/button.png);
+  color: #ffffff;
+  width: 130px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
 #results {
   float: left;
   margin-left: 3px;
@@ -39,11 +50,6 @@ body
 #search_wrapper {
   vertical-align: middle;
   margin-top: 4px;
-  -moz-border-bottom-colors: none;
-  -moz-border-image: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
   background: none repeat scroll 0 0 #FFFFFF;
   border-color: #8D8D8D -moz-use-text-color #8D8D8D #8D8D8D;
   border-radius: 3px 0 0 3px;
@@ -199,12 +205,13 @@ body
 .ddg_zeroclick_disambig {
     line-height: 1.4;
     padding: 4px;
-    margin-left: 38px;
-    width: expression(338 + "px");
+    margin-left: 41px;
+    width: expression(335 + "px");
 }
 
 .icon_disambig {
     padding-top: 5px;
+    margin-left: 3px;
     float: left;
     text-align: right;
     width: 48px;
