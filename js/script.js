@@ -1,16 +1,28 @@
 var cross = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>';
 var cross_answer = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/>';
 
+function makeSeeOther (query)
+{
+    var results = document.getElementById('ddg_zeroclick');
+
+    results.innerHTML += '<br />'
+                      +  '<div id="others_div">'  
+                      +    '<div id="more_results" onclick="more(\'' + query + '\');"/>' 
+                      +  '</div>';
+}
+
 function nothingFound(query)
 {
     var ddg_result = document.getElementById("ddg_zeroclick");
     if (ddg_result !== null){
         ddg_result.className = 'ddg_answer';
-        ddg_result.innerHTML =  'No zero click results found.'  
-                             +  '<a id="nothing_found_more" href="https://duckduckgo.com/?q='
-                             +      encodeURIComponent(query)
-                             +  '">See DuckDuckGo results</a>'  
-                             +  cross_answer;
+        ddg_result.innerHTML = 'No ZeroClick results found.'  
+                             +  cross_answer
+                             + '<div id="others_div">'  
+                             +    '<div id="more_results_nothing" onclick="more(\'' + query + '\');">'
+                             +      '<b>See other results<b>'
+                             +    '</div>' 
+                             + '</div>';                       
     }
 }
 
@@ -79,15 +91,8 @@ function displayAnswer(res, answer, query)
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
     ddg_result.innerHTML = answer + cross_answer;
-    
-    ddg_result.innerHTML += '<br /> <br />'
-                         +  '<div id="others_div">'  
-                         /*+    '<a class="ddg_more_answer" href="https://duckduckgo.com/?q='
-                         +      encodeURIComponent(query)
-                         +    '">More results</a>' 
-                         +    '<img src="css/imgs/icon_16.png"/>'*/
-                         +    '<div id="more_results" onclick="more(\'' + query + '\')"/>' 
-                         +  '</div>';
+
+    makeSeeOther(query);
 }
 
 function displaySummary(res, query) {
@@ -138,19 +143,12 @@ function displaySummary(res, query) {
                +    '</a>'
                +  '</div>';
     }
-          
-    result += '<br />'
-           +  '<div id="others_div">'  
-          /* +    '<a class="ddg_more" href="https://duckduckgo.com/?q='
-           +        encodeURIComponent(query)
-           +    '">More results</a>' 
-           +    '<img src="css/imgs/icon_16.png"/>'*/
-           +  '<div id="more_results" onclick="more(\'' + query + '\')"/>'
-           +  '</div>';
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result ;
+
+    makeSeeOther(query);
 }
 
 function disambigClick (topic)
@@ -239,17 +237,11 @@ function displayDisambiguation(res, query)
            +  '</div>'
            +  '<div class="clear"></div>';
      
-    result += '<br />'
-           +  '<div id="others_div">'  
-           /*+    '<a class="ddg_more" href="https://duckduckgo.com/?q=' + encodeURIComponent(query) + '">'    
-           +        'More results'
-           +    '</a>'*/
-           +    '<div id="more_results" onclick="more(\'' + query +'\')"/>' 
-           +  '</div>';         
-
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
+
+    makeSeeOther(query);
 }
 
 function displayCategory(res, query){
@@ -288,20 +280,13 @@ function displayCategory(res, query){
 
     result += '<div id="ddg_zeroclick_abstract">' 
            +    categories
-           +  '</div>';
-                
-    result += '<br />'
-           +  '<div id="others_div">'  
-           /*+    '<a class="ddg_more" href="https://duckduckgo.com/?q='
-           +      encodeURIComponent(query)
-           +    '">More results</a>' 
-           +    '<img src="css/imgs/icon_16.png"/>'*/
-           +    '<div id="more_results" onclick="more(\'' + query +'\')" />' 
-           +  '</div>';       
+           +  '</div>';      
 
     var ddg_result = createResultDiv();
     ddg_result.className = '';
     ddg_result.innerHTML = result;
+
+    makeSeeOther(query);
 }
 
 function renderZeroClick(res, query)
