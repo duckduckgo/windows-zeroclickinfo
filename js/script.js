@@ -19,9 +19,7 @@ function nothingFound(query)
         ddg_result.innerHTML = 'No ZeroClick results found.'  
                              +  cross_answer
                              + '<div id="others_div">'  
-                             +    '<div id="more_results_nothing" onclick="more(\'' + query + '\');">'
-                             +      '<b>See other results<b>'
-                             +    '</div>' 
+                             +    '<div id="more_results_nothing" onclick="more(\'' + query + '\');" />'
                              + '</div>';                       
     }
 }
