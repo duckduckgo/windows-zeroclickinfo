@@ -90,7 +90,7 @@ function displayAnswer(res, answer, query)
     
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
-    ddg_result.innerHTML = answer + cross_answer;
+    ddg_result.innerHTML = '<div style="width: 330px">' + answer + '</div>' + cross_answer;
 
     makeSeeOther(query);
 }
