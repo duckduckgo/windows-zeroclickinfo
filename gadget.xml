@@ -2,7 +2,7 @@
 <gadget>
   <name>DuckDuckGo</name>
   <namespace>windows.sdk</namespace>
-  <version>0.0.9</version>
+  <version>0.0.0.9</version>
   <author name="Adman">
       <info url="http://duckduckgo.com" />
       <logo src="css/imgs/icon_128.png" />
