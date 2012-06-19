@@ -3,7 +3,7 @@
   <name>DuckDuckGo</name>
   <namespace>windows.sdk</namespace>
   <version>0.0.0.9</version>
-  <author name="Adman">
+  <author name="DuckDuckGo">
       <info url="http://duckduckgo.com" />
       <logo src="css/imgs/icon_128.png" />
   </author>
