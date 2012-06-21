@@ -2,32 +2,58 @@ body
 {
   font-family: "Helvetica Neue","Segoe UI",Arial,sans-serif;
   margin: 0;
-  width: 400px;
+  width: 419px;
   font-size: 13px;
   height: expression( document.body.clientHeight < 776 ? "777px" : "auto" );
+  background-color: transparent;
 }
 
 #header {
-  background: url("imgs/bckgs/red.png") repeat-x scroll 0 0 #CD473B;
+  /*background: url("imgs/assets/rounded-box_with-search.png") no-repeat 0 0 transparent;*/
+  background-color: transparent;
   height: 59px;
   font-size: 20px;
   text-align: center;
 }
 
+#headerBckg {
+    /*position: absolute;*/
+    display: block;
+    /*top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;*/
+    width: auto;
+    height: auto;
+}
+
+#deleteText {
+  width: 17;
+  height: 18;
+  background-image: url("imgs/assets/btn_x.png") no-repeat 0 0;
+  position: absolute;
+  top: 12px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 10;
+}
+
 #header div {
-  width: 355px;
-  margin-left: 20px;
+  width: 340px;
+  position: absolute;
+  left: 67px;
+  top: 9px;
 }
 
 #more_results {
   background-image: url(imgs/button.png);
   color: #ffffff;
-  width: 110px;
-  height: 25px;
+  width: 88px;
+  height: 27px;
   text-align: center;
   cursor: pointer;
   margin-left: 5px;
-  margin-bottom: 2px;
+  margin-top: -10px;
 }
 
 #more_results_nothing {
@@ -38,12 +64,19 @@ body
   text-align: center;
   cursor: pointer;
   margin-left: -3px;
-  margin-bottom: 2px;
+  margin-top: -2px;
 }
 
 #results {
   float: left;
-  margin-left: 3px;
+  position: absolute;
+  top: 58px;
+  left: 3px;
+  margin-top: -2px;
+}
+
+#res {
+  background-color: #ffffff;
 }
 
 #ddg_zeroclick {
@@ -51,31 +84,25 @@ body
   border: 1px solid #D2D2D2;
   border-radius: 6px 6px 6px 6px;
   display: inline;
-  width: 395px;
+  width: 404px;
+  margin-left: 5px;
   z-index: 10;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  padding-bottom: 3px;
+  left: 1px;
+  padding-bottom: 2px;
 }
 
 
 #search_wrapper {
   vertical-align: middle;
-  margin-top: 4px;
-  background: none repeat scroll 0 0 #FFFFFF;
-  border-color: #8D8D8D -moz-use-text-color #8D8D8D #8D8D8D;
-  border-radius: 3px 0 0 3px;
-  border-style: solid none solid solid;
-  border-width: 1px 0 1px 1px;
-  box-shadow: 1px 1px 2px #999999 inset;
-  color: #222222;
+  background: none repeat scroll 0 0 #ffffff;
+  color: #000000;
   float: left;
   font-size: 95.2%;
-  height: 37px;
-  width: 250px;
-  outline: medium none;
+  height: 33px;
+  width: 265px;
+  border: none none none none;
   margin-left: 5px;
-  margin-top: 8px;
+  margin-top: 4px;
   padding: 4px 6px 4px 8px;
 }
 
@@ -85,14 +112,15 @@ body
 }
 
 #search_button {  
-  margin-top: 8px;
-  background: url("imgs/search_dropdown.v102.png") no-repeat scroll 0 0 transparent;
-  width: 43px;
-  height: 37px;
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  /*background: url("imgs/search_dropdown.v102.png") no-repeat scroll 0 0 transparent;*/
+  width: 41px;
+  height: 38px;
   border: 0 none;
   outline: medium none;
   cursor: pointer;
-  float: left;
 }
 
 #search_button:active {
@@ -136,8 +164,8 @@ body
     float: left;
     padding: 5px 0px 2px 2px;
     position: absolute;
-    right: 8px;
-    top: 100px;
+    right: 10px;
+    top: 50px;
 }
 
 #ddg_zeroclick_abstract {
@@ -411,7 +439,7 @@ body
   /*margin-top: -15px;*/
   position: absolute;
   right: 10px;
-  top: 70px;
+  top: 20px;
 }
 
 .clear {

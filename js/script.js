@@ -1,6 +1,15 @@
 var cross = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick" onclick="hideZeroClick();"/>';
 var cross_answer = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroclick_answer" onclick="hideZeroClick();"/>';
 
+function clearInput()
+{
+    var inp = document.getElementById('search_wrapper');
+    if (inp.value !== "")
+        inp.value = "";
+    else
+        return;
+}
+
 function makeSeeOther (query)
 {
     var results = document.getElementById('ddg_zeroclick');
@@ -31,7 +40,7 @@ function more (query)
 
 function hideZeroClick()
 {
-    var ddg_result = document.getElementById("ddg_zeroclick");
+    var ddg_result = document.getElementById("results");
     if (ddg_result !== null){
         ddg_result.style.display = 'none';
     }
@@ -39,7 +48,7 @@ function hideZeroClick()
 
 function showZeroClick()
 {
-    var ddg_result = document.getElementById("ddg_zeroclick");
+    var ddg_result = document.getElementById("results");
     if (ddg_result !== null){
         ddg_result.style.display = 'block';
     }
@@ -49,11 +58,15 @@ function createResultDiv()
 {  
     var result = document.getElementById("results");
     var ddg_result = document.getElementById("ddg_zeroclick");
+    var out = '';
     showZeroClick();
-    if (ddg_result === null) {
-        result.innerHTML = '<div id="ddg_zeroclick"></div>';
+    if (ddg_result === null){ 
+        out += '<img src="css/imgs/assets/results_top.png" id="rounded-top" />'
+            +  '<div id="res"><div id="ddg_zeroclick"></div></div>'
+            +  '<img src="css/imgs/assets/results_bot.png" id="rounded-bot" />';
+        results.innerHTML = out;
         ddg_result = document.getElementById("ddg_zeroclick");
-    } 
+    }  
 
     return ddg_result;
 }
@@ -343,24 +356,13 @@ function search(q, meanings){
 }
 
 function initDDG () {
-    System.Gadget.settingsUI = "settings.html";
-	  System.Gadget.onSettingsClosed = setSettings;
+    //System.Gadget.settingsUI = "settings.html";
+	  //System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
-        document.body.style.height = (59 + document.getElementById('results').clientHeight) + "px";
+        document.body.style.height = (58 + document.getElementById('results').clientHeight) + "px";
       }, 200);
-
-
-    /*document.getElementById("search_button").onmousedown = function(){
-      this.style.background = "url(css/imgs/search_active.png)";
-      this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
-    }
-    document.getElementById("search_button").onmouseup = function(){
-      this.style.background = "url(css/imgs/search_inactive.png)";
-      this.style.backgroundRepeat = "no-repeat scroll 0 0 transparent"; 
-    }*/
-
 
     document.getElementById("search_button").onclick = function(){
       var el = document.getElementById('search_wrapper');

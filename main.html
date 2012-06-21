@@ -9,14 +9,13 @@
 
   <body onload="initDDG();">
     <div id="header">
+      <g:background id="headerBckg" src="css/imgs/assets/rounded-box_with-search.png" alt="">      
       <div>
-        <a href="http://duckduckgo.com">
-          <img id="logo" src="css/imgs/logo_header.v101.png" />
-        </a>
         <form id="search_form" onsubmit="return false;">
-          <input id="search_wrapper" type="text" value="" />
-          <input id="search_button" type="submit" value="" />
+          <input id="search_wrapper" type="text" value=""></input>
         </form>
+        <span id="search_button"></span>
+        <img src="css/imgs/assets/btn_x.png" id="deleteText" onclick="clearInput();"/>
       </div>
     </div>
       
