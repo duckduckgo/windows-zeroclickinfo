@@ -4,10 +4,13 @@ var cross_answer = '<img src="css/imgs/icon_xon.v101.png" class="ddg_close_zeroc
 function clearInput()
 {
     var inp = document.getElementById('search_wrapper');
-    if (inp.value !== "")
+    if (inp.value !== ""){
         inp.value = "";
-    else
+        inp.focus();
+    }else{
+        inp.focus();
         return;
+    }
 }
 
 function makeSeeOther (query)
@@ -61,9 +64,10 @@ function createResultDiv()
     var out = '';
     showZeroClick();
     if (ddg_result === null){ 
-        out += '<img src="css/imgs/assets/results_top.png" id="rounded-top" />'
+        out += '<img src="css/imgs/assets/results_top.png" id="rounded-top"/>'
             +  '<div id="res"><div id="ddg_zeroclick"></div></div>'
             +  '<img src="css/imgs/assets/results_bot.png" id="rounded-bot" />';
+
         results.innerHTML = out;
         ddg_result = document.getElementById("ddg_zeroclick");
     }  
@@ -101,7 +105,7 @@ function displayAnswer(res, answer, query)
     
     var ddg_result = createResultDiv();
     ddg_result.className = "ddg_answer";
-    ddg_result.innerHTML = '<div style="width: 330px">' + answer + '</div>' + cross_answer;
+    ddg_result.innerHTML = '<div style="width: 330px; word-wrap: break-word;">' + answer + '</div>' + cross_answer;
 
     makeSeeOther(query);
 }
