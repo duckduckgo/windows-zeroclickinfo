@@ -72,10 +72,13 @@ function createResultDiv()
                 + '<div id="res"><div id="ddg_zeroclick"></div></div>'
                 +'<g:background src="css/imgs/assets/results_bot.png" id="rounded-bot"><div/></g:background>';*/
 
-        var out = '<g:background src="css/imgs/assets/results_top_new.png" id="roundedTop"><div>'
-                +   '</div></g:background>'
+        var out = '<g:background src="css/imgs/assets/results_top_new.png" id="roundedTop">'
+                +   '<div></div>'
+                + '</g:background>'
                 + '<div id="res"><div id="ddg_zeroclick"></div></div>'
-                +'<g:background src="css/imgs/assets/results_bot_new.png" id="roundedBot"><div></div></g:background>';
+                + '<g:background src="css/imgs/assets/results_bot_new.png" id="roundedBot">'
+                +   '<div></div>'
+                + '</g:background>';
 
         result.innerHTML = out;
         ddg_result = document.getElementById("ddg_zeroclick");
@@ -103,7 +106,6 @@ function displayAnswer(res, answer, query)
     
     if (res['Redirect'] !== ""){ 
         createRedirDiv(res['Redirect']);
-        //document.getElementById('redirect').click();
         window.location.href = res['Redirect'];
         return;
     }

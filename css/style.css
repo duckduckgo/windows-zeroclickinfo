@@ -355,7 +355,6 @@ body
 }
 
 .wrapper {
-    clear: left;
     padding-bottom: 3px;
     width: 383px;
     border: 1px solid #fafafa;
