@@ -7,6 +7,7 @@ function clearInput()
     if (inp.value !== ""){
         inp.value = "";
         inp.focus();
+        return;
     }else{
         inp.focus();
         return;
@@ -61,17 +62,25 @@ function createResultDiv()
 {  
     var result = document.getElementById("results");
     var ddg_result = document.getElementById("ddg_zeroclick");
-    var out = '';
     showZeroClick();
     if (ddg_result === null){ 
-        out += '<img src="css/imgs/assets/results_top.png" id="rounded-top"/>'
-            +  '<div id="res"><div id="ddg_zeroclick"></div></div>'
-            +  '<img src="css/imgs/assets/results_bot.png" id="rounded-bot" />';
+        /*var out = '<img src="css/imgs/assets/results_top.png" id="rounded-top" />'
+                + '<div id="res"><div id="ddg_zeroclick"></div></div>'
+                + '<img src="css/imgs/assets/results_bot.png" id="rounded-bot" />';*/
 
-        results.innerHTML = out;
+        /*var out ='<g:background src="css/imgs/assets/results_top.png" id="rounded-top"><div/></g:background>'
+                + '<div id="res"><div id="ddg_zeroclick"></div></div>'
+                +'<g:background src="css/imgs/assets/results_bot.png" id="rounded-bot"><div/></g:background>';*/
+
+        var out = '<g:background src="css/imgs/assets/results_top_new.png" id="roundedTop"><div>'
+                +   '</div></g:background>'
+                + '<div id="res"><div id="ddg_zeroclick"></div></div>'
+                +'<g:background src="css/imgs/assets/results_bot_new.png" id="roundedBot"><div></div></g:background>';
+
+        result.innerHTML = out;
         ddg_result = document.getElementById("ddg_zeroclick");
     }  
-
+  
     return ddg_result;
 }
 
@@ -213,9 +222,7 @@ function displayDisambiguation(res, query)
            +  '</div>';
 
     var disambigs = ''
-    var hidden_disambigs = '';
     var others = '';
-    var nhidden = 0;
     var icon_dis = '';
     var j = 0;
 
@@ -223,7 +230,7 @@ function displayDisambiguation(res, query)
         if (i === res['RelatedTopics'].length)
             break;
 
-        if (res['RelatedTopics'].length === 0) { 
+        if (res['RelatedTopics'].length === 0 && !res['RelatedTopics'][i]['Result']) { 
             break; 
         }else if (!res['RelatedTopics'][i]['Result'] && res['RelatedTopics'][i]['Topics'] && i < 3){
             disambigs += displayDisambiguationTopic (res, query, i);

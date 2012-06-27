@@ -8,17 +8,18 @@
   </head>
 
   <body onload="initDDG();">
-    <div id="header">
-      <g:background id="headerBckg" src="css/imgs/assets/rounded-box_with-search.png" alt="">      
-      <div>
-        <form id="search_form" onsubmit="return false;">
-          <input id="search_wrapper" type="text" value=""></input>
-        </form>
-        <span id="search_button"></span>
-        <img src="css/imgs/assets/btn_x.png" id="deleteText" onclick="clearInput();"/>
+    <g:background id="headerBckg" src="css/imgs/assets/rounded-box_with-search.png">      
+      <div id="header">
+        <div>
+          <form id="search_form" onsubmit="return false;">
+            <input id="search_wrapper" type="text" value=""></input>
+          </form>
+          <span id="search_button"></span>
+          <img src="css/imgs/assets/btn_x.png" id="deleteText" onclick="clearInput();"/>
+        </div>
       </div>
-    </div>
-      
+    </g:background>     
+
     <div id="results">
     </div>
   </body>
