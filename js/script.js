@@ -7,11 +7,10 @@ function clearInput()
     if (inp.value !== ""){
         inp.value = "";
         inp.focus();
-        return;
     }else{
         inp.focus();
-        return;
     }
+    hideZeroClick();
 }
 
 function makeSeeOther (query)
@@ -40,6 +39,7 @@ function nothingFound(query)
 function more (query)
 {
     window.location.href = "http://duckduckgo.com/?q=" + encodeURIComponent(query);
+    hideZeroClick();    
 }
 
 function hideZeroClick()
