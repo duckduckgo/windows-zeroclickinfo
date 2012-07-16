@@ -29,7 +29,6 @@ body
 #deleteText {
   width: 17;
   height: 18;
-  background-image: url("imgs/btn_x.png") no-repeat 0 0;
   position: absolute;
   top: 12px;
   right: 50px;
