@@ -29,7 +29,7 @@ body
 #deleteText {
   width: 17;
   height: 18;
-  background-image: url("imgs/assets/btn_x.png") no-repeat 0 0;
+  background-image: url("imgs/btn_x.png") no-repeat 0 0;
   position: absolute;
   top: 12px;
   right: 50px;
@@ -58,8 +58,8 @@ body
 #more_results_nothing {
   background-image: url(imgs/button_.png);
   color: #ffffff;
-  width: 110px;
-  height: 25px;
+  width: 115px;
+  height: 27px;
   text-align: center;
   cursor: pointer;
   margin-left: -3px;
@@ -69,17 +69,17 @@ body
 #results {
   float: left;
   position: absolute;
-  left: 1px;
+  left: 2px;
   top: 58px;
-  margin-top: -2px;
+  /*margin-top: -2px;*/
   display: none;
 }
 
 #res {
   background-color: #ffffff;
-  width: 412px;
-  margin-left: 3px;
-  /*background-image: url("imgs/assets/results_mid.png");*/
+  width: 414px; /*412*/
+  /*margin-left: 3px;*/
+  /*background-image: url("imgs/assets/no-shadow/mid_test_no_shadow.png");*/
 }
 
 #ddg_zeroclick {
