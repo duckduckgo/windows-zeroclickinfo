@@ -64,9 +64,9 @@ function createResultDiv()
     var ddg_result = document.getElementById("ddg_zeroclick");
     showZeroClick();
     if (ddg_result === null){ 
-        var out = '<img src="css/imgs/assets/results_top_new.png" id="rounded-top" />'
+        var out = '<img src="css/imgs/assets/top_rounded.png" id="rounded-top" />'
                 + '<div id="res"><div id="ddg_zeroclick"></div></div>'
-                + '<img src="css/imgs/assets/results_bot_new.png" id="rounded-bot" />';
+                + '<img src="css/imgs/assets/bot_rounded.png" id="rounded-bot" />';
 
         /*var out = '<div style="background-image: url("css/imgs/assets/no-shadow/top_test_no_shadow.png");" id="rounded-top" />'
                 + '<div id="res"><div id="ddg_zeroclick"></div></div>'
@@ -426,10 +426,11 @@ function SaveSettings()
 function setSettings()
 {
     sets = new GetDDGSettings();
-    var transparency = sets.background === "red" ? "#CD473B" : "transparent";
+    headerBckg.src = "css/imgs/assets/rounded-box_with-search-black.png";
+    /*var transparency = sets.background === "red" ? "#CD473B" : "transparent";
     var bg = document.getElementById('header');
     bg.style.backgroundImage = 'url("css/imgs/bckgs/' + sets.background +'.png")';
-    bg.style.backgroundRepeat = "repeat-x scroll 0 0 " + transparency;
+    bg.style.backgroundRepeat = "repeat-x scroll 0 0 " + transparency;*/
 }
 
 //do this before close sets
