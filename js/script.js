@@ -370,8 +370,8 @@ function search(q, meanings){
 }
 
 function initDDG () {
-    //System.Gadget.settingsUI = "settings.html";
-	  //System.Gadget.onSettingsClosed = setSettings;
+    System.Gadget.settingsUI = "settings.html";
+	  System.Gadget.onSettingsClosed = setSettings;
 
     //nasty hack
     setInterval( function(){
@@ -427,7 +427,8 @@ function SaveSettings()
 function setSettings()
 {
     sets = new GetDDGSettings();
-    headerBckg.src = "css/imgs/assets/rounded-box_with-search-black.png";
+    headerBckg.src = "css/imgs/bckgs/header_" + sets.background + ".png";
+
     /*var transparency = sets.background === "red" ? "#CD473B" : "transparent";
     var bg = document.getElementById('header');
     bg.style.backgroundImage = 'url("css/imgs/bckgs/' + sets.background +'.png")';
