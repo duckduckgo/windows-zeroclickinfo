@@ -9,9 +9,12 @@ You can download it from [here](https://duckduckgo.com/extensions/duckduckgo.gad
 ## Searching
 Of course, you can use `!bangs` as well. You'll get redirected into your default webbrowser.
 
-![Summary](http://i.imgur.com/PL5xM.png)
-
-
+## Contributing
 If you want to improve it, feel free to fork this repository and send pull request.
 
+You will need to copy this repository, or make symbolic link here:
+`"%USERPROFILE%\AppData\Local\Microsoft\Windows Sidebar\Gadgets\"` and add sufix .gadget (i.e. windows-zeroclickinfo.gadget
+
 Feedback is always welcome!
+
+![Summary](http://i.imgur.com/PL5xM.png)
