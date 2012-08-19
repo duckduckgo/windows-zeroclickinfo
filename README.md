@@ -13,7 +13,7 @@ Of course, you can use `!bangs` as well. You'll get redirected into your default
 If you want to improve it, feel free to fork this repository and send pull request.
 
 You will need to copy this repository, or make symbolic link here:
-`"%USERPROFILE%\AppData\Local\Microsoft\Windows Sidebar\Gadgets\"` and add sufix .gadget (i.e. windows-zeroclickinfo.gadget
+`"%USERPROFILE%\AppData\Local\Microsoft\Windows Sidebar\Gadgets\"` and add sufix .gadget (i.e. windows-zeroclickinfo.gadget)
 
 Feedback is always welcome!
 
