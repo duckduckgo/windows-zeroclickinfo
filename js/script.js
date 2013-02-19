@@ -373,6 +373,11 @@ function initDDG () {
     System.Gadget.settingsUI = "settings.html";
 	  System.Gadget.onSettingsClosed = setSettings;
 
+    var b = System.Gadget.Settings.readString("background")
+    if (b !== ''){
+      headerBckg.src = "css/imgs/bckgs/header_" + b + ".png";
+    }
+
     //nasty hack
     setInterval( function(){
         document.body.style.height = (58 + document.getElementById('results').clientHeight) + "px";
