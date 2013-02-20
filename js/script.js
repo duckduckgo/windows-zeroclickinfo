@@ -273,8 +273,7 @@ function displayCategory(res, query){
     var result = '';
     result += '<div id="ddg_zeroclick_header">'
            +    '<a href="https://duckduckgo.com/?q='  
-           +      encodeURIComponent(query) +'"> Meanings of ' 
-           +      res['Heading'] 
+           +      encodeURIComponent(query) +'">' + res['Heading'] 
            +    '</a>' 
            +    cross 
            +  '</div>';

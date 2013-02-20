@@ -8,6 +8,7 @@ You can download it from [here](https://duckduckgo.com/extensions/duckduckgo.gad
 
 ## Searching
 Of course, you can use `!bangs` as well. You'll get redirected into your default webbrowser.
+![Redirect](http://i.imgur.com/MYFq3uR.png)
 
 ## Contributing
 If you want to improve it, feel free to fork this repository and send pull request.
@@ -17,4 +18,19 @@ You will need to copy this repository, or make symbolic link here:
 
 Feedback is always welcome!
 
+## Screenshoots of possible results
+Summary result
+--------------
 ![Summary](http://i.imgur.com/PL5xM.png)
+
+Disambiguation result
+---------------------
+![Disambiguation](http://i.imgur.com/ABCZYhC.png)
+
+Category result
+---------------
+![Category](http://i.imgur.com/QnikQ0l.png)
+
+Instant answer result
+---------------------
+![Answer](http://i.imgur.com/ivM7d9y.png)
