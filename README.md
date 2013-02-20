@@ -18,7 +18,8 @@ You will need to copy this repository, or make symbolic link here:
 
 Feedback is always welcome!
 
-## Screenshoots of possible results
+## Screenshots of possible results
+
 Summary result
 --------------
 ![Summary](http://i.imgur.com/PL5xM.png)
