@@ -35,3 +35,6 @@ Category result
 Instant answer result
 ---------------------
 ![Answer](http://i.imgur.com/ivM7d9y.png)
+
+
+Copyright &copy; 2012 - 2014, [DuckDuckGo](https://duckduckgo.com)
